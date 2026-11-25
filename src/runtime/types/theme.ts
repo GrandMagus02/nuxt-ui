@@ -95,6 +95,7 @@ export interface ThemeDefaults {
   header?: Partial<ComponentTypes.HeaderProps>
   input?: Partial<ComponentTypes.InputProps>
   inputDate?: Partial<ComponentTypes.InputDateProps>
+  inputDuration?: Partial<ComponentTypes.InputDurationProps>
   inputMenu?: Partial<ComponentTypes.InputMenuProps>
   inputNumber?: Partial<ComponentTypes.InputNumberProps>
   inputRating?: Partial<ComponentTypes.InputRatingProps>

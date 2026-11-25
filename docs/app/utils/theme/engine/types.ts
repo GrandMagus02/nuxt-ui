@@ -133,7 +133,7 @@ export interface StyleOptions {
 
 /** The whole input family shares input's variant vocabulary (they extend it via defu). */
 const FIELD_VARIANTS = ['outline', 'soft', 'subtle', 'ghost', 'none']
-const FIELD_COMPONENTS = ['input', 'select', 'textarea', 'selectMenu', 'inputMenu', 'inputNumber', 'inputTags', 'inputDate', 'inputTime', 'pinInput']
+const FIELD_COMPONENTS = ['input', 'select', 'textarea', 'selectMenu', 'inputMenu', 'inputNumber', 'inputTags', 'inputDate', 'inputTime', 'inputDuration', 'pinInput']
 
 /** Which components support which default variant values. */
 export const VARIANT_SUPPORT: Record<string, string[]> = {
