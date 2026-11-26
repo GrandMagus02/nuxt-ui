@@ -6,6 +6,8 @@ export default (options: Required<ModuleOptions>) => ({
     canvas: 'relative',
     header: 'sticky top-0 z-3',
     corner: 'sticky start-0 z-1 h-full border-e border-b border-default bg-elevated',
+    cornerLabel: 'sr-only',
+    loadingBar: 'pointer-events-none sticky start-0 z-4 h-px overflow-hidden',
     columnHeader: 'group absolute top-0 flex h-full items-center gap-1 border-e border-b border-default bg-elevated font-medium text-highlighted select-none',
     columnHeaderLabel: 'min-w-0 flex-1 truncate',
     dragHandle: 'flex shrink-0 cursor-grab items-center text-dimmed opacity-0 transition-opacity group-hover:opacity-100 active:cursor-grabbing',
@@ -22,7 +24,9 @@ export default (options: Required<ModuleOptions>) => ({
     selection: 'pointer-events-none absolute z-1 border-2',
     fillHandle: 'pointer-events-auto absolute -end-[5px] -bottom-[5px] size-2 cursor-crosshair touch-none ring ring-bg',
     fillPreview: 'pointer-events-none absolute z-1 border-2 border-dashed',
-    dropIndicator: 'pointer-events-none absolute z-4'
+    dropIndicator: 'pointer-events-none absolute z-4',
+    empty: 'sticky start-0 py-6 text-center text-sm text-muted',
+    loading: 'sticky start-0 py-6 text-center'
   },
   variants: {
     color: {
@@ -120,10 +124,64 @@ export default (options: Required<ModuleOptions>) => ({
         columnHeader: 'opacity-50',
         rowHeader: 'opacity-50'
       }
+    },
+    loading: {
+      true: {
+        loadingBar: 'after:absolute after:inset-y-0 motion-reduce:after:inset-x-0 motion-reduce:after:animate-pulse'
+      }
+    },
+    loadingAnimation: {
+      'carousel': '',
+      'carousel-inverse': '',
+      'swing': '',
+      'elastic': ''
+    },
+    loadingColor: {
+      ...Object.fromEntries((options.theme.colors || []).map((color: string) => [color, ''])),
+      neutral: ''
     }
   },
+  compoundVariants: [...(options.theme.colors || []).map((loadingColor: string) => ({
+    loading: true,
+    loadingColor,
+    class: {
+      loadingBar: `after:bg-${loadingColor}`
+    }
+  })), {
+    loading: true,
+    loadingColor: 'neutral',
+    class: {
+      loadingBar: 'after:bg-inverted'
+    }
+  }, {
+    loading: true,
+    loadingAnimation: 'carousel',
+    class: {
+      loadingBar: 'motion-safe:after:animate-[carousel_2s_linear_infinite] motion-safe:rtl:after:animate-[carousel-rtl_2s_linear_infinite]'
+    }
+  }, {
+    loading: true,
+    loadingAnimation: 'carousel-inverse',
+    class: {
+      loadingBar: 'motion-safe:after:animate-[carousel-inverse_2s_linear_infinite] motion-safe:rtl:after:animate-[carousel-inverse-rtl_2s_linear_infinite]'
+    }
+  }, {
+    loading: true,
+    loadingAnimation: 'swing',
+    class: {
+      loadingBar: 'motion-safe:after:animate-[swing_2s_var(--ease-in-out)_infinite]'
+    }
+  }, {
+    loading: true,
+    loadingAnimation: 'elastic',
+    class: {
+      loadingBar: 'motion-safe:after:animate-[elastic_2s_var(--ease-in-out)_infinite]'
+    }
+  }],
   defaultVariants: {
     color: 'primary',
-    size: 'md'
+    size: 'md',
+    loadingColor: 'primary',
+    loadingAnimation: 'carousel'
   }
 })

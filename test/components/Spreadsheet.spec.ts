@@ -95,12 +95,21 @@ describe('Spreadsheet', () => {
     ['with as', { props: { ...props, as: 'section' } }],
     ['with class', { props: { ...props, class: 'h-96' } }],
     ['with ui', { props: { ...props, ui: { cell: 'font-mono' } } }],
+    ['with empty', { props: { 'aria-label': 'People', columns, 'empty': 'Nothing here' } }],
+    ['with loading', { props: { ...props, loading: true } }],
+    ['with loading without data', { props: { 'aria-label': 'People', columns, 'loading': true } }],
+    ['with loadingColor', { props: { ...props, loading: true, loadingColor: 'neutral' } }],
+    ['with loadingAnimation', { props: { ...props, loading: true, loadingAnimation: 'swing' } }],
+    ['with column class and headerClass', { props: { ...props, columns: [{ key: 'name', class: (row: Row) => row.active ? 'font-bold' : '', headerClass: 'italic' }] } }],
+    ['with column editable function', { props: { ...props, columns: [{ key: 'name', editable: (row: Row) => row.active }] } }],
     // Slots
     ['with cell slot', { props, slots: { cell: ({ value }: any) => `cell ${value}` } }],
     ['with name-cell slot', { props, slots: { 'name-cell': ({ value }: any) => `name ${value}` } }],
     ['with header slot', { props, slots: { header: ({ column }: any) => `header ${column.key}` } }],
     ['with age-header slot', { props, slots: { 'age-header': () => 'Age header' } }],
-    ['with row-header slot', { props, slots: { 'row-header': ({ rowIndex }: any) => `#${rowIndex}` } }]
+    ['with row-header slot', { props, slots: { 'row-header': ({ rowIndex }: any) => `#${rowIndex}` } }],
+    ['with empty slot', { props: { 'aria-label': 'People', columns }, slots: { empty: () => 'Empty slot' } }],
+    ['with loading slot', { props: { 'aria-label': 'People', columns, 'loading': true }, slots: { loading: () => 'Loading slot' } }]
   ])
 
   it('passes accessibility tests', async () => {
@@ -516,6 +525,84 @@ describe('Spreadsheet', () => {
     it('derives columns from the data', async () => {
       const wrapper = await mount({ columns: undefined })
       expect(wrapper.findAll('[role=columnheader][data-column]').map(header => header.text())).toEqual(['name', 'age', 'active', 'role'])
+      wrapper.unmount()
+    })
+  })
+
+  describe('configuration', () => {
+    const active = { anchor: { row: 0, column: 0 }, focus: { row: 0, column: 0 } }
+
+    it('decides editability per row with a column function', async () => {
+      const wrapper = await mount({ columns: [{ key: 'name', editable: (row: Row) => row.active }], selection: active })
+      expect(getCell(wrapper, 1, 0).attributes('aria-readonly')).toBe('true')
+      expect(getCell(wrapper, 0, 0).attributes('aria-readonly')).toBeUndefined()
+      await keydown(getCell(wrapper, 0, 0), { key: 'ArrowDown' })
+      await keydown(getCell(wrapper, 1, 0), { key: 'Enter' })
+      expect(getCell(wrapper, 1, 0).find('input').exists()).toBe(false)
+      wrapper.unmount()
+    })
+
+    it('applies column classes per row and header classes', async () => {
+      const wrapper = await mount({ columns: [{ key: 'name', class: (row: Row) => row.active ? 'font-bold' : 'italic', headerClass: 'underline' }] })
+      expect(getCell(wrapper, 0, 0).classes()).toContain('font-bold')
+      expect(getCell(wrapper, 1, 0).classes()).toContain('italic')
+      expect(wrapper.find('[role=columnheader][data-column="0"]').classes()).toContain('underline')
+      wrapper.unmount()
+    })
+
+    it('moves right after Enter with enterDirection end, and stays with none', async () => {
+      const wrapper = await mount({ enterDirection: 'end', selection: active })
+      await keydown(getCell(wrapper, 0, 0), { key: 'Enter' })
+      await keydown(getCell(wrapper, 0, 0).find('input'), { key: 'Enter' })
+      expect(wrapper.props('selection').anchor).toEqual({ row: 0, column: 1 })
+
+      await wrapper.setProps({ enterDirection: 'none' })
+      await keydown(getCell(wrapper, 0, 1), { key: 'Enter' })
+      await keydown(getCell(wrapper, 0, 1).find('input'), { key: 'Enter' })
+      expect(wrapper.props('selection').anchor).toEqual({ row: 0, column: 1 })
+      wrapper.unmount()
+    })
+
+    it('does not edit on typing without editOnType', async () => {
+      const wrapper = await mount({ editOnType: false, selection: active })
+      await keydown(getCell(wrapper, 0, 0), { key: 'x' })
+      expect(getCell(wrapper, 0, 0).find('input').exists()).toBe(false)
+      wrapper.unmount()
+    })
+
+    it('sets the editor placeholder', async () => {
+      const wrapper = await mount({ columns: [{ key: 'name', placeholder: 'Full name' }], selection: active })
+      await keydown(getCell(wrapper, 0, 0), { key: 'Enter' })
+      expect(getCell(wrapper, 0, 0).find('input').attributes('placeholder')).toBe('Full name')
+      wrapper.unmount()
+    })
+
+    it('clamps widths to minColumnWidth', async () => {
+      const wrapper = await mount({ minColumnWidth: 100, columns: [{ key: 'name', width: 20 }] })
+      expect(wrapper.find('[role=columnheader][data-column="0"]').attributes('style')).toContain('width: 100px')
+      wrapper.unmount()
+    })
+
+    it('renders the empty text and the loading state', async () => {
+      const wrapper = await mount({ data: [], empty: 'Nothing' })
+      expect(wrapper.find('[data-slot=empty]').text()).toBe('Nothing')
+      await wrapper.setProps({ loading: true })
+      expect(wrapper.find('[data-slot=loading]').exists()).toBe(true)
+      expect(wrapper.find('[role=grid]').attributes('aria-busy')).toBe('true')
+      wrapper.unmount()
+    })
+
+    it('emits edit, sort, row and column events', async () => {
+      const wrapper = await mount({ selection: active })
+      await keydown(getCell(wrapper, 0, 0), { key: 'Enter' })
+      expect(emitted(wrapper, 'edit-start')?.[0]).toEqual([{ row: 0, column: 0 }])
+      await keydown(getCell(wrapper, 0, 0).find('input'), { key: 'Escape' })
+      expect(emitted(wrapper, 'edit-end')?.[0]).toEqual([{ row: 0, column: 0 }, true])
+
+      await keydown(getCell(wrapper, 0, 0), { key: 'ArrowDown', altKey: true, shiftKey: true })
+      expect(emitted(wrapper, 'row-move')?.[0]).toEqual([0, 1])
+      await keydown(getCell(wrapper, 1, 0), { key: 'ArrowRight', altKey: true, shiftKey: true })
+      expect(emitted(wrapper, 'column-move')?.[0]).toEqual(['name', 0, 1])
       wrapper.unmount()
     })
   })

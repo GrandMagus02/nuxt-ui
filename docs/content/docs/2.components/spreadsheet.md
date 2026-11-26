@@ -50,17 +50,20 @@ Use the `columns` prop to choose the columns and how each one behaves. A column 
 - `label`{lang="ts-type"}: the header text, the `key` by default.
 - `type`{lang="ts-type"}: `text`, `number`, `checkbox` or `select`. It controls the editor, the alignment and how typed or pasted text is parsed.
 - `options`{lang="ts-type"}: the choices of a `select` column, as values or `{ label, value }` objects.
-- `width`{lang="ts-type"}, `minWidth`{lang="ts-type"} and `maxWidth`{lang="ts-type"}: the size in pixels.
+- `width`{lang="ts-type"}, `minWidth`{lang="ts-type"} and `maxWidth`{lang="ts-type"}: the size in pixels. Columns without them use the `default-column-width` and `min-column-width` props.
 - `align`{lang="ts-type"}: `start`, `center` or `end`.
-- `editable`{lang="ts-type"}, `resizable`{lang="ts-type"} and `movable`{lang="ts-type"}: set to `false` to lock this column.
+- `editable`{lang="ts-type"}, `resizable`{lang="ts-type"}, `movable`{lang="ts-type"} and `sortable`{lang="ts-type"}: set to `false` to lock this column. `editable` also takes a function to lock some rows only, like `row => !row.archived`.
+- `placeholder`{lang="ts-type"}: the placeholder of the editor.
+- `class`{lang="ts-type"} and `headerClass`{lang="ts-type"}: classes for the cells and the header. `class` also takes a function of the row, to style cells by value.
 - `format`{lang="ts-type"}: formats a value for display, like a currency. Editing and copying still use the raw value.
 - `parse`{lang="ts-type"}: converts typed or pasted text to a value. Return `undefined` to reject the input.
 
 ```ts
 const columns: SpreadsheetColumn<Product>[] = [
   { key: 'sku', label: 'SKU', editable: false },
+  { key: 'name', label: 'Name', editable: row => !row.archived, placeholder: 'Product name' },
   { key: 'category', label: 'Category', type: 'select', options: ['Audio', 'Video'] },
-  { key: 'price', label: 'Price', type: 'number', format: value => currency.format(value) },
+  { key: 'price', label: 'Price', type: 'number', format: value => currency.format(value), class: row => row.price < 0 ? 'text-error' : '' },
   { key: 'available', label: 'Available', type: 'checkbox' }
 ]
 ```
@@ -72,6 +75,7 @@ Every feature can be turned off with a prop, so the same component works as a fu
 | Prop | Default | Description |
 | --- | --- | --- |
 | `editable` | `true` | Change values by typing, pasting, clearing and filling. |
+| `editOnType` | `true` | Start editing when a character is typed, replacing the value. |
 | `selectable` | `true` | Select ranges, whole rows and whole columns. When off, only the active cell is highlighted. |
 | `rowHeaders` | `true` | Show the row numbers. |
 | `columnHeaders` | `true` | Show the column headers. |
@@ -97,11 +101,11 @@ name: 'spreadsheet-options-example'
 
 Press :kbd{value="enter"} or :kbd{value="F2"}, or double click a cell, to edit its value. Typing any character starts editing and replaces the value, as in spreadsheet apps.
 
-In edit mode, :kbd{value="enter"} saves and moves down, :kbd{value="tab"} saves and moves to the next cell, and :kbd{value="escape"} cancels. Clicking another cell saves.
+In edit mode, :kbd{value="enter"} saves and moves down, :kbd{value="tab"} saves and moves to the next cell, and :kbd{value="escape"} cancels. Clicking another cell saves. Set `enter-direction` to `end` to move to the next cell after :kbd{value="enter"} instead, or to `none` to stay. Set `edit-on-type` to `false` so typing does not start editing.
 
 `number` values are parsed from the text and invalid input is rejected. `checkbox` cells toggle with :kbd{value="space"}, :kbd{value="enter"} or a click. `select` cells open a list of their `options`.
 
-Every edit, paste, clear and fill emits a `change` event with the list of changed cells.
+Every edit, paste, clear and fill emits a `change` event with the list of changed cells. Editing a cell also emits `edit-start` and `edit-end`, and row and column operations emit `sort`, `row-insert`, `rows-delete`, `row-move`, `column-move` and `column-resize`.
 
 ### Selection
 
@@ -137,7 +141,7 @@ Dragging uses [Pragmatic drag and drop](https://atlassian.design/components/prag
 
 Rows and columns outside the view are not rendered, so sheets with thousands of rows and dozens of columns scroll smoothly. Give the spreadsheet a bounded height, with a class like `h-96`, for virtualization to apply.
 
-Pass an object to tune it: `{ rows: true, columns: false, overscan: 4 }`. Set `virtualize` to `false` to render every cell, for small sheets that should grow with their content.
+Pass an object to tune it: `{ rows: true, columns: false, overscan: 4 }`. `initialRows` and `initialColumns` set how many are rendered before the size of the spreadsheet is known, during server-side rendering. Set `virtualize` to `false` to render every cell, for small sheets that should grow with their content.
 
 ::component-example
 ---
@@ -149,6 +153,20 @@ class: '!p-0'
 ::note
 Rows have a fixed height, set by `size` or the `row-height` prop, so the visible rows can be computed without measuring them.
 ::
+
+### Context menu
+
+Pass an object to the `context-menu` prop to configure the [ContextMenu](/docs/components/context-menu) component, like `{ modal: false }`. Use the `context-menu-items` prop to add, remove or reorder items. It receives the default items, grouped, and the selection:
+
+```ts
+function contextMenuItems(items: ContextMenuItem[][], { range }: SpreadsheetContextMenuContext) {
+  return [...items, [{ label: 'Export selection', icon: 'i-lucide-download', onSelect: () => exportRange(range) }]]
+}
+```
+
+### Empty and loading
+
+The `empty` prop, or the `#empty` slot, sets what is shown when there are no rows. The `loading` prop shows a loading bar under the column headers, styled with `loading-color` and `loading-animation`, and the `#loading` slot replaces the empty text while there are no rows.
 
 ### Keyboard
 

@@ -3,7 +3,7 @@
 import type { ComponentPublicInstance, Directive, VNode } from 'vue'
 import type { AppConfig } from '@nuxt/schema'
 import theme from '#build/ui/spreadsheet'
-import type { ContextMenuItem } from './ContextMenu.vue'
+import type { ContextMenuItem, ContextMenuProps } from './ContextMenu.vue'
 import type { IconProps } from './Icon.vue'
 import type { ComponentConfig } from '../types/tv'
 import type { SpreadsheetCellPosition, SpreadsheetSelection, SpreadsheetRange } from '../utils/spreadsheet'
@@ -35,20 +35,17 @@ export interface SpreadsheetColumn<T extends SpreadsheetData = SpreadsheetData> 
   options?: (string | number | SpreadsheetSelectOption)[]
   /** The initial width of the column in pixels. Defaults to `defaultColumnWidth`. */
   width?: number
-  /**
-   * The minimum width of the column in pixels when resizing.
-   * @defaultValue 48
-   */
+  /** The minimum width of the column in pixels when resizing. Defaults to `minColumnWidth`. */
   minWidth?: number
   /** The maximum width of the column in pixels when resizing. */
   maxWidth?: number
   /** The alignment of the values. Defaults to `end` for `number`, `center` for `checkbox` and `start` otherwise. */
   align?: 'start' | 'center' | 'end'
   /**
-   * Whether the values of this column can be changed. Has no effect when the spreadsheet is not `editable`.
+   * Whether the values of this column can be changed. A function decides for each row. Has no effect when the spreadsheet is not `editable`.
    * @defaultValue true
    */
-  editable?: boolean
+  editable?: boolean | ((row: T, rowIndex: number) => boolean)
   /**
    * Whether this column can be resized. Has no effect when `resizableColumns` is disabled.
    * @defaultValue true
@@ -59,11 +56,30 @@ export interface SpreadsheetColumn<T extends SpreadsheetData = SpreadsheetData> 
    * @defaultValue true
    */
   movable?: boolean
+  /**
+   * Whether the rows can be sorted by this column. Has no effect when `sortable` is disabled.
+   * @defaultValue true
+   */
+  sortable?: boolean
+  /** The placeholder of the editor of this column. */
+  placeholder?: string
   /** Formats a value for display. Edits and copies still use the raw value. */
   format?: (value: any, row: T) => string
   /** Converts typed or pasted text to a value. Return `undefined` to reject the input. */
   parse?: (input: string, row: T) => any
-  class?: any
+  /** Classes added to the cells of this column. A function returns them for each row. */
+  class?: any | ((row: T, rowIndex: number) => any)
+  /** Classes added to the header of this column. */
+  headerClass?: any
+}
+
+export interface SpreadsheetContextMenuContext<T extends SpreadsheetData = SpreadsheetData> {
+  /** The active cell and the selected range. */
+  selection: SpreadsheetSelection | null
+  /** The selected range, normalized. */
+  range: SpreadsheetRange | undefined
+  /** The column of the active cell. */
+  column: SpreadsheetColumn<T> | undefined
 }
 
 export interface SpreadsheetChange<T extends SpreadsheetData = SpreadsheetData> {
@@ -90,6 +106,16 @@ export interface SpreadsheetVirtualizeOptions {
    * @defaultValue 4
    */
   overscan?: number
+  /**
+   * The number of rows rendered before the size of the spreadsheet is known, e.g. during server-side rendering.
+   * @defaultValue 30
+   */
+  initialRows?: number
+  /**
+   * The number of columns rendered before the size of the spreadsheet is known, e.g. during server-side rendering.
+   * @defaultValue 12
+   */
+  initialColumns?: number
 }
 
 export interface SpreadsheetProps<T extends SpreadsheetData = SpreadsheetData> {
@@ -107,6 +133,11 @@ export interface SpreadsheetProps<T extends SpreadsheetData = SpreadsheetData> {
    * @defaultValue 128
    */
   defaultColumnWidth?: number
+  /**
+   * The minimum width in pixels of columns without a `minWidth`.
+   * @defaultValue 48
+   */
+  minColumnWidth?: number
   /** The width of the row headers in pixels. Defaults to a width that fits the last row number. */
   rowHeaderWidth?: number
   /**
@@ -118,10 +149,38 @@ export interface SpreadsheetProps<T extends SpreadsheetData = SpreadsheetData> {
    */
   size?: Spreadsheet['variants']['size']
   /**
+   * The text to display when there are no rows.
+   * @defaultValue t('table.noData')
+   */
+  empty?: string
+  /**
+   * Display a loading bar under the column headers.
+   * @defaultValue false
+   */
+  loading?: boolean
+  /**
+   * @defaultValue 'primary'
+   */
+  loadingColor?: Spreadsheet['variants']['loadingColor']
+  /**
+   * @defaultValue 'carousel'
+   */
+  loadingAnimation?: Spreadsheet['variants']['loadingAnimation']
+  /**
    * Allow changing values by typing, pasting, clearing and filling.
    * @defaultValue true
    */
   editable?: boolean
+  /**
+   * Start editing the active cell when a character is typed, replacing its value.
+   * @defaultValue true
+   */
+  editOnType?: boolean
+  /**
+   * Where the active cell moves after saving an edit with `Enter`. `Shift` + `Enter` moves the opposite way.
+   * @defaultValue 'down'
+   */
+  enterDirection?: 'down' | 'end' | 'none'
   /**
    * Allow selecting ranges of cells, whole rows and whole columns. When disabled, only the active cell is highlighted.
    * @defaultValue true
@@ -168,10 +227,12 @@ export interface SpreadsheetProps<T extends SpreadsheetData = SpreadsheetData> {
    */
   history?: boolean | number
   /**
-   * Open a menu of actions on right click.
+   * Open a menu of actions on right click. An object is passed to the ContextMenu component.
    * @defaultValue true
    */
-  contextMenu?: boolean
+  contextMenu?: boolean | Omit<ContextMenuProps, 'items'>
+  /** Changes the items of the context menu. Receives the default items, grouped. */
+  contextMenuItems?: (items: ContextMenuItem[][], context: SpreadsheetContextMenuContext<T>) => ContextMenuItem[][]
   /**
    * Allow sorting the rows by a column from the context menu.
    * @defaultValue true
@@ -206,13 +267,41 @@ export interface SpreadsheetProps<T extends SpreadsheetData = SpreadsheetData> {
    * @IconifyIcon
    */
   checkedIcon?: IconProps['name']
+  /**
+   * The icon of the ascending sort item of the context menu.
+   * @defaultValue appConfig.ui.icons.arrowDown
+   * @IconifyIcon
+   */
+  sortAscendingIcon?: IconProps['name']
+  /**
+   * The icon of the descending sort item of the context menu.
+   * @defaultValue appConfig.ui.icons.arrowUp
+   * @IconifyIcon
+   */
+  sortDescendingIcon?: IconProps['name']
   class?: any
   ui?: Spreadsheet['slots']
 }
 
 export interface SpreadsheetEmits<T extends SpreadsheetData = SpreadsheetData> {
   /** Emitted when values are edited, pasted, cleared or filled. */
-  change: [changes: SpreadsheetChange<T>[]]
+  'change': [changes: SpreadsheetChange<T>[]]
+  /** Emitted when editing a cell starts. */
+  'edit-start': [position: SpreadsheetCellPosition]
+  /** Emitted when editing a cell ends, with whether the edit was cancelled. */
+  'edit-end': [position: SpreadsheetCellPosition, cancelled: boolean]
+  /** Emitted when the rows are sorted by a column. */
+  'sort': [key: keyof T & string, direction: 'asc' | 'desc']
+  /** Emitted when a row is inserted. */
+  'row-insert': [rowIndex: number, row: T]
+  /** Emitted when rows are deleted, with the index of the first one. */
+  'rows-delete': [rowIndex: number, rows: T[]]
+  /** Emitted when a row is moved. */
+  'row-move': [from: number, to: number]
+  /** Emitted when a column is moved. */
+  'column-move': [key: keyof T & string, from: number, to: number]
+  /** Emitted when a column is resized. */
+  'column-resize': [key: keyof T & string, width: number | undefined]
 }
 
 export interface SpreadsheetCellSlotProps<T extends SpreadsheetData = SpreadsheetData> {
@@ -250,6 +339,8 @@ export type SpreadsheetSlots<T extends SpreadsheetData = SpreadsheetData> = {
   'editor'?(props: SpreadsheetEditorSlotProps<T>): VNode[]
   'header'?(props: SpreadsheetHeaderSlotProps<T>): VNode[]
   'row-header'?(props: { row: T, rowIndex: number }): VNode[]
+  'empty'?(props?: {}): VNode[]
+  'loading'?(props?: {}): VNode[]
 } & Partial<DynamicSlots<T>>
 
 type DndInfo = { type: 'row' | 'column', index: number, drag?: boolean, drop?: boolean }
@@ -285,7 +376,10 @@ defineOptions({ inheritAttrs: false })
 
 const _props = withDefaults(defineProps<SpreadsheetProps<T>>(), {
   defaultColumnWidth: 128,
+  minColumnWidth: 48,
   editable: true,
+  editOnType: true,
+  enterDirection: 'down',
   selectable: true,
   rowHeaders: true,
   columnHeaders: true,
@@ -321,14 +415,14 @@ const { t } = useLocale()
 const id = useId()
 
 const ROW_HEIGHTS = { xs: 28, sm: 32, md: 36, lg: 40, xl: 44 } as const
-const MIN_COLUMN_WIDTH = 48
-const FALLBACK_ROWS = 30
-const FALLBACK_COLUMNS = 12
 
 // eslint-disable-next-line vue/no-dupe-keys
 const ui = computed(() => tv({ extend: theme, ...(appConfig.ui?.spreadsheet || {}) })({
   color: props.color,
-  size: props.size
+  size: props.size,
+  loading: props.loading,
+  loadingColor: props.loadingColor,
+  loadingAnimation: props.loadingAnimation
 }))
 
 const rootRef = useTemplateRef<ComponentPublicInstance>('rootRef')
@@ -373,13 +467,24 @@ function isColumnEditable(column: SpreadsheetColumn<T> | undefined) {
   return !!column && !!props.editable && column.editable !== false
 }
 
+/** Whether a cell can be changed, applying the column's `editable` function to its row. */
+function isCellEditable(rowIndex: number, column: SpreadsheetColumn<T> | undefined, row: T | undefined = data.value[rowIndex]) {
+  if (!isColumnEditable(column)) {
+    return false
+  }
+  if (typeof column!.editable !== 'function') {
+    return true
+  }
+  return !!row && column!.editable(row, rowIndex)
+}
+
 function getOptions(column: SpreadsheetColumn<T>): SpreadsheetSelectOption[] {
   return (column.options || []).map(option => typeof option === 'object' ? option : { label: String(option), value: option })
 }
 
 const widths = computed(() => displayColumns.value.map(column => clamp(
   columnWidths.value?.[column.key] ?? column.width ?? props.defaultColumnWidth!,
-  column.minWidth ?? MIN_COLUMN_WIDTH,
+  column.minWidth ?? props.minColumnWidth!,
   column.maxWidth ?? Number.POSITIVE_INFINITY
 )))
 const columnOffsets = computed(() => getOffsets(widths.value))
@@ -434,9 +539,9 @@ useResizeObserver(viewport, () => {
 
 const virtualizeOptions = computed(() => {
   if (!props.virtualize) {
-    return { rows: false, columns: false, overscan: 0 }
+    return { rows: false, columns: false, overscan: 0, initialRows: 0, initialColumns: 0 }
   }
-  return { rows: true, columns: true, overscan: 4, ...(props.virtualize === true ? {} : props.virtualize) }
+  return { rows: true, columns: true, overscan: 4, initialRows: 30, initialColumns: 12, ...(props.virtualize === true ? {} : props.virtualize) }
 })
 
 const isMeasured = computed(() => scroll.width > 0 && scroll.height > 0)
@@ -447,7 +552,7 @@ const rowRange = computed<[number, number]>(() => {
     return [0, count - 1]
   }
   if (!isMeasured.value) {
-    return [0, Math.min(count, FALLBACK_ROWS) - 1]
+    return [0, Math.min(count, virtualizeOptions.value.initialRows) - 1]
   }
   const height = rowSize.value
   const first = Math.floor(scroll.top / height)
@@ -462,7 +567,7 @@ const columnRange = computed<[number, number]>(() => {
     return [0, count - 1]
   }
   if (!isMeasured.value) {
-    return [0, Math.min(count, FALLBACK_COLUMNS) - 1]
+    return [0, Math.min(count, virtualizeOptions.value.initialColumns) - 1]
   }
   return getVisibleRange(columnOffsets.value, scroll.left, Math.max(1, scroll.width - rowHeaderSize.value), virtualizeOptions.value.overscan)
 })
@@ -741,7 +846,7 @@ function writeCells(writes: CellWrite[], base: T[] = data.value) {
   for (const write of writes) {
     const column = displayColumns.value[write.column]
     const row = next[write.row]
-    if (!row || !isColumnEditable(column)) {
+    if (!row || !isCellEditable(write.row, column, row)) {
       continue
     }
     const oldValue = row[column!.key]
@@ -822,8 +927,10 @@ function insertRow(index: number) {
     return
   }
   const next = data.value.slice()
-  next.splice(index, 0, newRow(index))
+  const row = newRow(index)
+  next.splice(index, 0, row)
   commit(next)
+  emits('row-insert', index, row)
   select({ row: index, column: selection.value?.anchor.column ?? 0 })
   focusActiveCell()
 }
@@ -834,8 +941,9 @@ function deleteSelectedRows() {
   }
   const { top, bottom } = range.value
   const next = data.value.slice()
-  next.splice(top, bottom - top + 1)
+  const removed = next.splice(top, bottom - top + 1)
   commit(next)
+  emits('rows-delete', top, removed)
   if (next.length) {
     select({ row: Math.min(top, next.length - 1), column: selection.value?.anchor.column ?? 0 })
     focusActiveCell()
@@ -844,7 +952,7 @@ function deleteSelectedRows() {
 
 function sortBy(columnIndex: number, direction: 'asc' | 'desc') {
   const column = displayColumns.value[columnIndex]
-  if (!column || !props.editable || !props.sortable) {
+  if (!column || !props.editable || !props.sortable || column.sortable === false) {
     return
   }
   const factor = direction === 'asc' ? 1 : -1
@@ -863,6 +971,7 @@ function sortBy(columnIndex: number, direction: 'asc' | 'desc') {
     return String(x).localeCompare(String(y), undefined, { numeric: true }) * factor
   })
   commit(next)
+  emits('sort', column.key, direction)
 }
 
 function moveRow(from: number, to: number) {
@@ -870,6 +979,7 @@ function moveRow(from: number, to: number) {
     return
   }
   commit(moveItem(data.value, from, to))
+  emits('row-move', from, to)
   const column = selection.value?.anchor.column ?? 0
   select({ row: to, column })
   scrollToCell({ row: to, column })
@@ -882,6 +992,7 @@ function moveColumn(from: number, to: number) {
     return
   }
   columnOrder.value = moveItem(displayColumns.value.map(column => column.key as string), from, to)
+  emits('column-move', column!.key, from, to)
   const row = selection.value?.anchor.row ?? 0
   select({ row, column: to })
   scrollToCell({ row, column: to })
@@ -898,7 +1009,7 @@ function isEditingCell(row: number, column: number) {
 
 function startEditing(position: SpreadsheetCellPosition, initial?: string) {
   const column = displayColumns.value[position.column]
-  if (!isColumnEditable(column) || getType(column!) === 'checkbox') {
+  if (!isCellEditable(position.row, column) || getType(column!) === 'checkbox') {
     return
   }
 
@@ -910,6 +1021,7 @@ function startEditing(position: SpreadsheetCellPosition, initial?: string) {
 
   scrollToCell(position)
   editing.value = { row: position.row, column: position.column, draft }
+  emits('edit-start', { row: position.row, column: position.column })
 
   nextTick(() => {
     const field = getCellElement(position)?.querySelector<HTMLElement>('input, select, textarea, [contenteditable]')
@@ -952,6 +1064,7 @@ function commitEditing(move?: 'up' | 'down' | 'start' | 'end', value?: { raw: an
       writeCells([{ row: current.row, column: current.column, value: next }])
     }
   }
+  emits('edit-end', { row: current.row, column: current.column }, false)
 
   if (move) {
     const rtl = isRtl()
@@ -963,7 +1076,11 @@ function commitEditing(move?: 'up' | 'down' | 'start' | 'end', value?: { raw: an
 }
 
 function cancelEditing() {
+  const current = editing.value
   editing.value = null
+  if (current) {
+    emits('edit-end', { row: current.row, column: current.column }, true)
+  }
   focusActiveCell()
 }
 
@@ -978,10 +1095,12 @@ function onEditorKeydown(event: KeyboardEvent) {
     return
   }
   switch (event.key) {
-    case 'Enter':
+    case 'Enter': {
       event.preventDefault()
-      commitEditing(event.shiftKey ? 'up' : 'down')
+      const moves = { down: ['down', 'up'], end: ['end', 'start'], none: [undefined, undefined] } as const
+      commitEditing(moves[props.enterDirection ?? 'down'][event.shiftKey ? 1 : 0])
       break
+    }
     case 'Tab':
       event.preventDefault()
       commitEditing(event.shiftKey ? 'start' : 'end')
@@ -1069,7 +1188,7 @@ function onKeydown(event: KeyboardEvent) {
       handled()
       const column = displayColumns.value[anchor.column]
       if (column && getType(column) === 'checkbox') {
-        if (isColumnEditable(column)) {
+        if (isCellEditable(anchor.row, column)) {
           toggleCheckboxes()
         }
         return
@@ -1100,7 +1219,7 @@ function onKeydown(event: KeyboardEvent) {
     const column = displayColumns.value[anchor.column]
     if (column && getType(column) === 'checkbox') {
       handled()
-      if (isColumnEditable(column)) {
+      if (isCellEditable(anchor.row, column)) {
         toggleCheckboxes()
       }
       return
@@ -1132,7 +1251,7 @@ function onKeydown(event: KeyboardEvent) {
   }
 
   // Typing a character replaces the value of the active cell, as in spreadsheet apps.
-  if (event.key.length === 1 && !event.altKey && !event.isComposing && isColumnEditable(displayColumns.value[anchor.column])) {
+  if (props.editOnType && event.key.length === 1 && !event.altKey && !event.isComposing && isCellEditable(anchor.row, displayColumns.value[anchor.column])) {
     handled()
     startEditing(anchor, event.key)
   }
@@ -1461,10 +1580,14 @@ function startResize(event: PointerEvent, columnIndex: number) {
   const direction = isRtl() ? -1 : 1
 
   const onMove = (moveEvent: PointerEvent) => {
-    const width = clamp(Math.round(startWidth + (moveEvent.clientX - startX) * direction), column.minWidth ?? MIN_COLUMN_WIDTH, column.maxWidth ?? Number.POSITIVE_INFINITY)
+    const width = clamp(Math.round(startWidth + (moveEvent.clientX - startX) * direction), column.minWidth ?? props.minColumnWidth!, column.maxWidth ?? Number.POSITIVE_INFINITY)
     columnWidths.value = { ...columnWidths.value, [column.key]: width }
   }
   const onUp = () => {
+    const width = columnWidths.value?.[column.key]
+    if (width !== undefined && width !== startWidth) {
+      emits('column-resize', column.key, width)
+    }
     window.removeEventListener('pointermove', onMove)
     window.removeEventListener('pointerup', onUp)
     window.removeEventListener('pointercancel', onUp)
@@ -1481,6 +1604,7 @@ function resetWidth(columnIndex: number) {
   }
   const { [column.key]: _, ...rest } = columnWidths.value
   columnWidths.value = rest
+  emits('column-resize', column.key, undefined)
 }
 
 function onDblclick(event: MouseEvent) {
@@ -1596,7 +1720,7 @@ function onPointerDown(event: PointerEvent) {
   }
 
   const column = displayColumns.value[position.column]!
-  if (target.closest('[data-checkbox]') && isColumnEditable(column) && !extend) {
+  if (target.closest('[data-checkbox]') && isCellEditable(position.row, column) && !extend) {
     writeCells([{ row: position.row, column: position.column, value: !getValue(position.row, position.column) }])
   } else if (props.selectable) {
     startPointerDrag(event, 'cells')
@@ -1763,16 +1887,36 @@ function getRangeStyle(target: SpreadsheetRange) {
 const selectionStyle = computed(() => range.value && rowCount.value && columnCount.value ? getRangeStyle(range.value) : undefined)
 const fillPreviewStyle = computed(() => fillTarget.value ? getRangeStyle(fillTarget.value.range) : undefined)
 
-const cellClasses = computed(() => displayColumns.value.map(column => ui.value.cell({
-  align: getAlign(column),
-  readonly: !!props.editable && column.editable === false,
-  class: [props.ui?.cell, column.class]
-})))
+// Classes are computed once per column, unless the column decides its classes or editability for each row.
+const cellClasses = computed(() => displayColumns.value.map(column => typeof column.class === 'function' || typeof column.editable === 'function'
+  ? undefined
+  : ui.value.cell({
+      align: getAlign(column),
+      readonly: !!props.editable && column.editable === false,
+      class: [props.ui?.cell, column.class]
+    })))
 
-const columnHeaderClasses = computed(() => ({
-  idle: ui.value.columnHeader({ class: props.ui?.columnHeader }),
-  dragging: ui.value.columnHeader({ dragging: true, class: props.ui?.columnHeader })
-}))
+function getCellClass(rowIndex: number, columnIndex: number) {
+  const cached = cellClasses.value[columnIndex]
+  if (cached !== undefined) {
+    return cached
+  }
+  const column = displayColumns.value[columnIndex]!
+  const row = data.value[rowIndex]!
+  return ui.value.cell({
+    align: getAlign(column),
+    readonly: !!props.editable && !isCellEditable(rowIndex, column, row),
+    class: [props.ui?.cell, typeof column.class === 'function' ? column.class(row, rowIndex) : column.class]
+  })
+}
+
+function getColumnHeaderClass(columnIndex: number) {
+  const column = displayColumns.value[columnIndex]!
+  return ui.value.columnHeader({
+    dragging: dragging.value?.type === 'column' && dragging.value.index === columnIndex,
+    class: [props.ui?.columnHeader, column.headerClass]
+  })
+}
 
 const rowHeaderClasses = computed(() => ({
   idle: ui.value.rowHeader({ class: props.ui?.rowHeader }),
@@ -1812,7 +1956,7 @@ function editorSlotProps(rowIndex: number, columnIndex: number): SpreadsheetEdit
   }
 }
 
-const contextMenuItems = computed<ContextMenuItem[][]>(() => {
+const menuItems = computed<ContextMenuItem[][]>(() => {
   const groups: ContextMenuItem[][] = []
   const anchor = selection.value?.anchor
 
@@ -1849,10 +1993,10 @@ const contextMenuItems = computed<ContextMenuItem[][]>(() => {
     ])
   }
 
-  if (props.editable && props.sortable && anchor) {
+  if (props.editable && props.sortable && anchor && displayColumns.value[anchor.column]?.sortable !== false) {
     groups.push([
-      { label: t('spreadsheet.sortAscending'), icon: appConfig.ui.icons.arrowDown, onSelect: () => sortBy(anchor.column, 'asc') },
-      { label: t('spreadsheet.sortDescending'), icon: appConfig.ui.icons.arrowUp, onSelect: () => sortBy(anchor.column, 'desc') }
+      { label: t('spreadsheet.sortAscending'), icon: props.sortAscendingIcon || appConfig.ui.icons.arrowDown, onSelect: () => sortBy(anchor.column, 'asc') },
+      { label: t('spreadsheet.sortDescending'), icon: props.sortDescendingIcon || appConfig.ui.icons.arrowUp, onSelect: () => sortBy(anchor.column, 'desc') }
     ])
   }
 
@@ -1870,8 +2014,18 @@ const contextMenuItems = computed<ContextMenuItem[][]>(() => {
     } }])
   }
 
-  return groups.filter(group => group.length)
+  const items = groups.filter(group => group.length)
+  if (!props.contextMenuItems) {
+    return items
+  }
+  return props.contextMenuItems(items, {
+    selection: selection.value,
+    range: range.value,
+    column: anchor ? displayColumns.value[anchor.column] : undefined
+  }).filter(group => group.length)
 })
+
+const contextMenuProps = computed(() => typeof props.contextMenu === 'object' ? props.contextMenu : {})
 
 defineExpose({
   /** The scroll container of the spreadsheet. */
@@ -1888,7 +2042,7 @@ defineExpose({
 </script>
 
 <template>
-  <UContextMenu :items="contextMenuItems" :disabled="!props.contextMenu || !contextMenuItems.length" :size="props.size">
+  <UContextMenu :size="props.size" v-bind="contextMenuProps" :items="menuItems" :disabled="!props.contextMenu || !menuItems.length">
     <Primitive
       ref="rootRef"
       :as="props.as"
@@ -1899,6 +2053,7 @@ defineExpose({
       :aria-colcount="columnCount + (props.rowHeaders ? 1 : 0)"
       :aria-multiselectable="props.selectable ? true : undefined"
       :aria-readonly="props.editable ? undefined : true"
+      :aria-busy="props.loading ? true : undefined"
       :class="ui.root({ class: [props.ui?.root, props.class] })"
       @scroll.passive="onScroll"
       @keydown="onKeydown"
@@ -1927,7 +2082,7 @@ defineExpose({
             :class="ui.corner({ class: props.ui?.corner })"
             :style="{ width: px(rowHeaderSize) }"
           >
-            <span class="sr-only">{{ t('spreadsheet.selectAll') }}</span>
+            <span data-slot="cornerLabel" :class="ui.cornerLabel({ class: props.ui?.cornerLabel })">{{ t('spreadsheet.selectAll') }}</span>
           </div>
 
           <div
@@ -1939,7 +2094,7 @@ defineExpose({
             :data-column="columnIndex"
             :data-highlighted="range && columnIndex >= range.start && columnIndex <= range.end ? true : undefined"
             data-slot="columnHeader"
-            :class="dragging?.type === 'column' && dragging.index === columnIndex ? columnHeaderClasses.dragging : columnHeaderClasses.idle"
+            :class="getColumnHeaderClass(columnIndex)"
             :style="{ insetInlineStart: px(rowHeaderSize + columnOffsets[columnIndex]!), width: px(widths[columnIndex]!) }"
           >
             <span
@@ -1971,6 +2126,14 @@ defineExpose({
             />
           </div>
         </div>
+
+        <div
+          v-if="props.loading && props.columnHeaders"
+          aria-hidden="true"
+          data-slot="loadingBar"
+          :class="ui.loadingBar({ class: props.ui?.loadingBar })"
+          :style="{ top: px(headerHeight - 1), marginTop: '-1px', width: scroll.width ? px(scroll.width) : '100%' }"
+        />
 
         <div
           v-for="rowIndex in renderedRows"
@@ -2014,14 +2177,14 @@ defineExpose({
             role="gridcell"
             :aria-colindex="columnIndex + columnIndexOffset"
             :aria-selected="props.selectable ? isInRange(range, rowIndex, columnIndex) : undefined"
-            :aria-readonly="props.editable && !isColumnEditable(displayColumns[columnIndex]) ? true : undefined"
+            :aria-readonly="props.editable && !isCellEditable(rowIndex, displayColumns[columnIndex]) ? true : undefined"
             :tabindex="tabStop?.row === rowIndex && tabStop?.column === columnIndex ? 0 : -1"
             :data-row="rowIndex"
             :data-column="columnIndex"
             :data-active="selection?.anchor.row === rowIndex && selection?.anchor.column === columnIndex ? true : undefined"
             :data-selected="isInRange(range, rowIndex, columnIndex) && !(selection?.anchor.row === rowIndex && selection?.anchor.column === columnIndex) ? true : undefined"
             data-slot="cell"
-            :class="cellClasses[columnIndex]"
+            :class="getCellClass(rowIndex, columnIndex)"
             :style="{ insetInlineStart: px(rowHeaderSize + columnOffsets[columnIndex]!), width: px(widths[columnIndex]!) }"
           >
             <template v-if="isEditingCell(rowIndex, columnIndex)">
@@ -2047,6 +2210,7 @@ defineExpose({
                     type="text"
                     :inputmode="getType(displayColumns[columnIndex]!) === 'number' ? 'decimal' : undefined"
                     autocomplete="off"
+                    :placeholder="displayColumns[columnIndex]!.placeholder"
                     :aria-label="displayColumns[columnIndex]!.label ?? displayColumns[columnIndex]!.key"
                     data-slot="editor"
                     :class="ui.editor({ class: props.ui?.editor })"
@@ -2063,7 +2227,7 @@ defineExpose({
                   v-if="getType(displayColumns[columnIndex]!) === 'checkbox'"
                   role="checkbox"
                   :aria-checked="!!getValue(rowIndex, columnIndex)"
-                  :aria-readonly="!isColumnEditable(displayColumns[columnIndex]) || undefined"
+                  :aria-readonly="!isCellEditable(rowIndex, displayColumns[columnIndex]) || undefined"
                   :aria-label="displayColumns[columnIndex]!.label ?? displayColumns[columnIndex]!.key"
                   data-checkbox
                   :data-state="getValue(rowIndex, columnIndex) ? 'checked' : 'unchecked'"
@@ -2093,6 +2257,22 @@ defineExpose({
         <div v-if="fillPreviewStyle" aria-hidden="true" data-slot="fillPreview" :class="ui.fillPreview({ class: props.ui?.fillPreview })" :style="fillPreviewStyle" />
 
         <div v-if="dropIndicatorStyle" aria-hidden="true" data-slot="dropIndicator" :class="ui.dropIndicator({ class: props.ui?.dropIndicator })" :style="dropIndicatorStyle" />
+      </div>
+
+      <div
+        v-if="!rowCount"
+        role="row"
+        :aria-rowindex="props.columnHeaders ? 2 : 1"
+        :data-slot="props.loading ? 'loading' : 'empty'"
+        :class="props.loading ? ui.loading({ class: props.ui?.loading }) : ui.empty({ class: props.ui?.empty })"
+        :style="{ width: scroll.width ? px(scroll.width) : undefined }"
+      >
+        <div role="gridcell" :aria-colspan="columnCount || undefined">
+          <slot v-if="props.loading" name="loading" />
+          <slot v-else name="empty">
+            {{ props.empty || t('table.noData') }}
+          </slot>
+        </div>
       </div>
     </Primitive>
   </UContextMenu>

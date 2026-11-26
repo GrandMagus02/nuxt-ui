@@ -55,6 +55,7 @@ const columnWidths = ref<Record<string, number>>({})
 
 const options = reactive({
   editable: true,
+  editOnType: true,
   selectable: true,
   rowHeaders: true,
   columnHeaders: true,
@@ -68,8 +69,11 @@ const options = reactive({
   sortable: true,
   insertRows: true,
   deleteRows: true,
-  virtualize: true
+  virtualize: true,
+  loading: false
 })
+
+const enterDirection = ref<'down' | 'end' | 'none'>('down')
 
 const lastChange = ref('')
 </script>
@@ -84,7 +88,8 @@ const lastChange = ref('')
         :label="key"
         size="sm"
       />
-      <USelect v-model="rowCount" :items="[10, 100, 1000, 10000, 100000]" size="sm" class="w-28" />
+      <USelect v-model="rowCount" :items="[0, 10, 100, 1000, 10000, 100000]" size="sm" class="w-28" />
+      <USelect v-model="enterDirection" :items="['down', 'end', 'none']" size="sm" class="w-28" />
     </div>
 
     <USpreadsheet
@@ -94,6 +99,7 @@ const lastChange = ref('')
       v-model:column-widths="columnWidths"
       :columns="columns"
       v-bind="options"
+      :enter-direction="enterDirection"
       aria-label="Employees"
       class="h-[560px]"
       @change="changes => lastChange = changes.slice(0, 5).map(change => `${change.key}[${change.rowIndex}] = ${change.value}`).join(', ')"

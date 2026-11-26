@@ -24,6 +24,7 @@ const columns: SpreadsheetColumn<Expense>[] = [
 
 const options = reactive({
   editable: true,
+  editOnType: true,
   selectable: true,
   rowHeaders: true,
   columnHeaders: true,
