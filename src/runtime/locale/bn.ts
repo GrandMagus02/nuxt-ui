@@ -234,6 +234,21 @@ export default defineLocale<Messages>({
     toaster: {
       label: 'বিজ্ঞপ্তি',
       viewport: 'বিজ্ঞপ্তিসমূহ ({hotkey})'
+    },
+    videoPlayer: {
+      captions: 'ক্যাপশন',
+      fullscreen: 'পূর্ণ স্ক্রিন',
+      label: 'ভিডিও প্লেয়ার',
+      mute: 'নিঃশব্দ করুন',
+      normal: 'স্বাভাবিক',
+      off: 'বন্ধ',
+      pause: 'বিরতি',
+      pictureInPicture: 'ছবির মধ্যে ছবি',
+      play: 'চালান',
+      seek: 'অবস্থান',
+      settings: 'সেটিংস',
+      speed: 'গতি',
+      volume: 'ভলিউম'
     }
   }
 })

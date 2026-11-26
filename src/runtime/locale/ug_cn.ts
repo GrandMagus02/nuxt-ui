@@ -235,6 +235,21 @@ export default defineLocale<Messages>({
     toaster: {
       label: 'ئۇقتۇرۇش',
       viewport: 'ئۇقتۇرۇشلار ({hotkey})'
+    },
+    videoPlayer: {
+      captions: 'ئاستى خەت',
+      fullscreen: 'پۈتۈن ئېكران',
+      label: 'سىن قويغۇچ',
+      mute: 'ئاۋازسىز',
+      normal: 'نورمال',
+      off: 'تاقاق',
+      pause: 'ۋاقىتلىق توختىتىش',
+      pictureInPicture: 'رەسىم ئىچىدە رەسىم',
+      play: 'قويۇش',
+      seek: 'ئورنى',
+      settings: 'تەڭشەكلەر',
+      speed: 'سۈرئەت',
+      volume: 'ئاۋاز مىقدارى'
     }
   }
 })

@@ -234,6 +234,21 @@ export default defineLocale<Messages>({
     toaster: {
       label: 'Tilkynning',
       viewport: 'Tilkynningar ({hotkey})'
+    },
+    videoPlayer: {
+      captions: 'Skjátextar',
+      fullscreen: 'Allur skjárinn',
+      label: 'Myndspilari',
+      mute: 'Þagga',
+      normal: 'Venjulegur',
+      off: 'Slökkt',
+      pause: 'Gera hlé',
+      pictureInPicture: 'Mynd í mynd',
+      play: 'Spila',
+      seek: 'Spóla',
+      settings: 'Stillingar',
+      speed: 'Hraði',
+      volume: 'Hljóðstyrkur'
     }
   }
 })

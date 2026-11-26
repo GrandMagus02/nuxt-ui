@@ -234,6 +234,21 @@ export default defineLocale<Messages>({
     toaster: {
       label: 'Обавештење',
       viewport: 'Обавештења ({hotkey})'
+    },
+    videoPlayer: {
+      captions: 'Титлови',
+      fullscreen: 'Цео екран',
+      label: 'Видео плејер',
+      mute: 'Искључи звук',
+      normal: 'Нормално',
+      off: 'Искључено',
+      pause: 'Паузирај',
+      pictureInPicture: 'Слика у слици',
+      play: 'Пусти',
+      seek: 'Премотавање',
+      settings: 'Подешавања',
+      speed: 'Брзина',
+      volume: 'Јачина звука'
     }
   }
 })

@@ -234,6 +234,21 @@ export default defineLocale<Messages>({
     toaster: {
       label: 'Pranešimas',
       viewport: 'Pranešimai ({hotkey})'
+    },
+    videoPlayer: {
+      captions: 'Subtitrai',
+      fullscreen: 'Visas ekranas',
+      label: 'Vaizdo grotuvas',
+      mute: 'Nutildyti',
+      normal: 'Įprastas',
+      off: 'Išjungta',
+      pause: 'Pristabdyti',
+      pictureInPicture: 'Vaizdas vaizde',
+      play: 'Leisti',
+      seek: 'Persukti',
+      settings: 'Nustatymai',
+      speed: 'Greitis',
+      volume: 'Garsumas'
     }
   }
 })

@@ -234,6 +234,21 @@ export default defineLocale<Messages>({
     toaster: {
       label: 'Njoftim',
       viewport: 'Njoftime ({hotkey})'
+    },
+    videoPlayer: {
+      captions: 'Titrat',
+      fullscreen: 'Ekran i plotë',
+      label: 'Luajtësi i videos',
+      mute: 'Hiq zërin',
+      normal: 'Normale',
+      off: 'Joaktive',
+      pause: 'Pauzë',
+      pictureInPicture: 'Figurë brenda figurës',
+      play: 'Luaj',
+      seek: 'Pozicioni',
+      settings: 'Cilësimet',
+      speed: 'Shpejtësia',
+      volume: 'Volumi'
     }
   }
 })

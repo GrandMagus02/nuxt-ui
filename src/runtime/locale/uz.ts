@@ -234,6 +234,21 @@ export default defineLocale<Messages>({
     toaster: {
       label: 'Bildirishnoma',
       viewport: 'Bildirishnomalar ({hotkey})'
+    },
+    videoPlayer: {
+      captions: 'Subtitrlar',
+      fullscreen: 'Toʻliq ekran',
+      label: 'Video pleyer',
+      mute: 'Ovozni oʻchirish',
+      normal: 'Oddiy',
+      off: 'Oʻchiq',
+      pause: 'Pauza',
+      pictureInPicture: 'Rasm ichida rasm',
+      play: 'Ijro etish',
+      seek: 'Oʻtkazish',
+      settings: 'Sozlamalar',
+      speed: 'Tezlik',
+      volume: 'Ovoz balandligi'
     }
   }
 })

@@ -234,6 +234,21 @@ export default defineLocale<Messages>({
     toaster: {
       label: 'Ειδοποίηση',
       viewport: 'Ειδοποιήσεις ({hotkey})'
+    },
+    videoPlayer: {
+      captions: 'Υπότιτλοι',
+      fullscreen: 'Πλήρης οθόνη',
+      label: 'Πρόγραμμα αναπαραγωγής βίντεο',
+      mute: 'Σίγαση',
+      normal: 'Κανονική',
+      off: 'Απενεργοποίηση',
+      pause: 'Παύση',
+      pictureInPicture: 'Εικόνα σε εικόνα',
+      play: 'Αναπαραγωγή',
+      seek: 'Μετάβαση',
+      settings: 'Ρυθμίσεις',
+      speed: 'Ταχύτητα',
+      volume: 'Ένταση ήχου'
     }
   }
 })

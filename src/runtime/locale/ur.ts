@@ -235,6 +235,21 @@ export default defineLocale<Messages>({
     toaster: {
       label: 'اطلاع',
       viewport: 'اطلاعات ({hotkey})'
+    },
+    videoPlayer: {
+      captions: 'کیپشنز',
+      fullscreen: 'فل اسکرین',
+      label: 'ویڈیو پلیئر',
+      mute: 'خاموش کریں',
+      normal: 'نارمل',
+      off: 'بند',
+      pause: 'روکیں',
+      pictureInPicture: 'تصویر میں تصویر',
+      play: 'چلائیں',
+      seek: 'آگے پیچھے کریں',
+      settings: 'ترتیبات',
+      speed: 'رفتار',
+      volume: 'آواز'
     }
   }
 })

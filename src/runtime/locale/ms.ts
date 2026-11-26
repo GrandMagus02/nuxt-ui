@@ -234,6 +234,21 @@ export default defineLocale<Messages>({
     toaster: {
       label: 'Pemberitahuan',
       viewport: 'Pemberitahuan ({hotkey})'
+    },
+    videoPlayer: {
+      captions: 'Sari kata',
+      fullscreen: 'Skrin penuh',
+      label: 'Pemain video',
+      mute: 'Senyapkan',
+      normal: 'Biasa',
+      off: 'Mati',
+      pause: 'Jeda',
+      pictureInPicture: 'Gambar dalam gambar',
+      play: 'Main',
+      seek: 'Kedudukan',
+      settings: 'Tetapan',
+      speed: 'Kelajuan',
+      volume: 'Kelantangan'
     }
   }
 })

@@ -234,6 +234,21 @@ export default defineLocale<Messages>({
     toaster: {
       label: 'Ծանուցում',
       viewport: 'Ծանուցումներ ({hotkey})'
+    },
+    videoPlayer: {
+      captions: 'Ենթագրեր',
+      fullscreen: 'Լիաէկրան',
+      label: 'Տեսանվագարկիչ',
+      mute: 'Անջատել ձայնը',
+      normal: 'Նորմալ',
+      off: 'Անջատված',
+      pause: 'Դադար',
+      pictureInPicture: 'Նկար նկարում',
+      play: 'Նվագարկել',
+      seek: 'Դիրք',
+      settings: 'Կարգավորումներ',
+      speed: 'Արագություն',
+      volume: 'Ձայնի ուժգնություն'
     }
   }
 })

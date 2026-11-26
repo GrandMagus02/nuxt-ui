@@ -234,6 +234,21 @@ export default defineLocale<Messages>({
     toaster: {
       label: 'Bildirim',
       viewport: 'Bildirimler ({hotkey})'
+    },
+    videoPlayer: {
+      captions: 'Altyazılar',
+      fullscreen: 'Tam ekran',
+      label: 'Video oynatıcı',
+      mute: 'Sesi kapat',
+      normal: 'Normal',
+      off: 'Kapalı',
+      pause: 'Duraklat',
+      pictureInPicture: 'Resim içinde resim',
+      play: 'Oynat',
+      seek: 'İlerleme',
+      settings: 'Ayarlar',
+      speed: 'Hız',
+      volume: 'Ses düzeyi'
     }
   }
 })

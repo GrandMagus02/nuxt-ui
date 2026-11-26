@@ -234,6 +234,21 @@ export default defineLocale<Messages>({
     toaster: {
       label: 'Jakinarazpena',
       viewport: 'Jakinarazpenak ({hotkey})'
+    },
+    videoPlayer: {
+      captions: 'Azpitituluak',
+      fullscreen: 'Pantaila osoa',
+      label: 'Bideo-erreproduzitzailea',
+      mute: 'Isildu',
+      normal: 'Normala',
+      off: 'Desaktibatuta',
+      pause: 'Pausatu',
+      pictureInPicture: 'Irudia irudian',
+      play: 'Erreproduzitu',
+      seek: 'Posizioa',
+      settings: 'Ezarpenak',
+      speed: 'Abiadura',
+      volume: 'Bolumena'
     }
   }
 })

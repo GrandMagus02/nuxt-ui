@@ -235,6 +235,21 @@ export default defineLocale<Messages>({
     toaster: {
       label: 'ئاگادارکردنەوە',
       viewport: 'ئاگادارکردنەوەکان ({hotkey})'
+    },
+    videoPlayer: {
+      captions: 'ژێرنووس',
+      fullscreen: 'پڕبەشاشە',
+      label: 'لێدەری ڤیدیۆ',
+      mute: 'بێدەنگکردن',
+      normal: 'ئاسایی',
+      off: 'کوژاوە',
+      pause: 'ڕاگرتن',
+      pictureInPicture: 'وێنە لەناو وێنە',
+      play: 'لێدان',
+      seek: 'شوێن',
+      settings: 'ڕێکخستنەکان',
+      speed: 'خێرایی',
+      volume: 'قەبارەی دەنگ'
     }
   }
 })

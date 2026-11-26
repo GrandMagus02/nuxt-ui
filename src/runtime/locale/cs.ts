@@ -234,6 +234,21 @@ export default defineLocale<Messages>({
     toaster: {
       label: 'Oznámení',
       viewport: 'Oznámení ({hotkey})'
+    },
+    videoPlayer: {
+      captions: 'Titulky',
+      fullscreen: 'Celá obrazovka',
+      label: 'Přehrávač videa',
+      mute: 'Ztlumit',
+      normal: 'Normální',
+      off: 'Vypnuto',
+      pause: 'Pozastavit',
+      pictureInPicture: 'Obraz v obraze',
+      play: 'Přehrát',
+      seek: 'Posun',
+      settings: 'Nastavení',
+      speed: 'Rychlost',
+      volume: 'Hlasitost'
     }
   }
 })

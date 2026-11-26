@@ -234,6 +234,21 @@ export default defineLocale<Messages>({
     toaster: {
       label: 'Известие',
       viewport: 'Известия ({hotkey})'
+    },
+    videoPlayer: {
+      captions: 'Субтитри',
+      fullscreen: 'Цял екран',
+      label: 'Видеоплейър',
+      mute: 'Без звук',
+      normal: 'Нормална',
+      off: 'Изключени',
+      pause: 'Пауза',
+      pictureInPicture: 'Картина в картината',
+      play: 'Пусни',
+      seek: 'Превъртане',
+      settings: 'Настройки',
+      speed: 'Скорост',
+      volume: 'Сила на звука'
     }
   }
 })

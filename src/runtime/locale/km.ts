@@ -234,6 +234,21 @@ export default defineLocale<Messages>({
     toaster: {
       label: 'ការជូនដំណឹង',
       viewport: 'ការជូនដំណឹង ({hotkey})'
+    },
+    videoPlayer: {
+      captions: 'អក្សររត់',
+      fullscreen: 'ពេញអេក្រង់',
+      label: 'កម្មវិធីចាក់វីដេអូ',
+      mute: 'បិទសំឡេង',
+      normal: 'ធម្មតា',
+      off: 'បិទ',
+      pause: 'ផ្អាក',
+      pictureInPicture: 'រូបភាពក្នុងរូបភាព',
+      play: 'ចាក់',
+      seek: 'រំកិល',
+      settings: 'ការកំណត់',
+      speed: 'ល្បឿន',
+      volume: 'កម្រិតសំឡេង'
     }
   }
 })

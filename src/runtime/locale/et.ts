@@ -234,6 +234,21 @@ export default defineLocale<Messages>({
     toaster: {
       label: 'Teavitus',
       viewport: 'Teavitused ({hotkey})'
+    },
+    videoPlayer: {
+      captions: 'Subtiitrid',
+      fullscreen: 'Täisekraan',
+      label: 'Videopleier',
+      mute: 'Vaigista',
+      normal: 'Tavaline',
+      off: 'Väljas',
+      pause: 'Peata',
+      pictureInPicture: 'Pilt pildis',
+      play: 'Esita',
+      seek: 'Keri',
+      settings: 'Seaded',
+      speed: 'Kiirus',
+      volume: 'Helitugevus'
     }
   }
 })

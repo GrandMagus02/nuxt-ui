@@ -234,6 +234,21 @@ export default defineLocale<Messages>({
     toaster: {
       label: '通知',
       viewport: '通知（{hotkey}）'
+    },
+    videoPlayer: {
+      captions: '字幕',
+      fullscreen: '全屏',
+      label: '视频播放器',
+      mute: '静音',
+      normal: '正常',
+      off: '关闭',
+      pause: '暂停',
+      pictureInPicture: '画中画',
+      play: '播放',
+      seek: '进度',
+      settings: '设置',
+      speed: '播放速度',
+      volume: '音量'
     }
   }
 })

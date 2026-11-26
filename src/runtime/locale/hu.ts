@@ -234,6 +234,21 @@ export default defineLocale<Messages>({
     toaster: {
       label: 'Értesítés',
       viewport: 'Értesítések ({hotkey})'
+    },
+    videoPlayer: {
+      captions: 'Feliratok',
+      fullscreen: 'Teljes képernyő',
+      label: 'Videolejátszó',
+      mute: 'Némítás',
+      normal: 'Normál',
+      off: 'Ki',
+      pause: 'Szünet',
+      pictureInPicture: 'Kép a képben',
+      play: 'Lejátszás',
+      seek: 'Tekerés',
+      settings: 'Beállítások',
+      speed: 'Sebesség',
+      volume: 'Hangerő'
     }
   }
 })

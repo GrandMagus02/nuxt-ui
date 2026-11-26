@@ -234,6 +234,21 @@ export default defineLocale<Messages>({
     toaster: {
       label: 'Огоҳинома',
       viewport: 'Огоҳиномаҳо ({hotkey})'
+    },
+    videoPlayer: {
+      captions: 'Зернависҳо',
+      fullscreen: 'Экрани пурра',
+      label: 'Плеери видео',
+      mute: 'Хомӯш кардани садо',
+      normal: 'Муқаррарӣ',
+      off: 'Хомӯш',
+      pause: 'Таваққуф',
+      pictureInPicture: 'Тасвир дар тасвир',
+      play: 'Пахш',
+      seek: 'Гардондан',
+      settings: 'Танзимот',
+      speed: 'Суръат',
+      volume: 'Баландии садо'
     }
   }
 })

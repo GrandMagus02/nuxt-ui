@@ -234,6 +234,21 @@ export default defineLocale<Messages>({
     toaster: {
       label: 'ການແຈ້ງເຕືອນ',
       viewport: 'ການແຈ້ງເຕືອນ ({hotkey})'
+    },
+    videoPlayer: {
+      captions: 'ຄຳບັນຍາຍ',
+      fullscreen: 'ເຕັມຈໍ',
+      label: 'ເຄື່ອງຫຼິ້ນວິດີໂອ',
+      mute: 'ປິດສຽງ',
+      normal: 'ປົກກະຕິ',
+      off: 'ປິດ',
+      pause: 'ຢຸດຊົ່ວຄາວ',
+      pictureInPicture: 'ພາບຊ້ອນພາບ',
+      play: 'ຫຼິ້ນ',
+      seek: 'ເລື່ອນ',
+      settings: 'ການຕັ້ງຄ່າ',
+      speed: 'ຄວາມໄວ',
+      volume: 'ລະດັບສຽງ'
     }
   }
 })

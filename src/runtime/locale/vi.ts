@@ -234,6 +234,21 @@ export default defineLocale<Messages>({
     toaster: {
       label: 'Thông báo',
       viewport: 'Thông báo ({hotkey})'
+    },
+    videoPlayer: {
+      captions: 'Phụ đề',
+      fullscreen: 'Toàn màn hình',
+      label: 'Trình phát video',
+      mute: 'Tắt tiếng',
+      normal: 'Bình thường',
+      off: 'Tắt',
+      pause: 'Tạm dừng',
+      pictureInPicture: 'Hình trong hình',
+      play: 'Phát',
+      seek: 'Tua',
+      settings: 'Cài đặt',
+      speed: 'Tốc độ',
+      volume: 'Âm lượng'
     }
   }
 })

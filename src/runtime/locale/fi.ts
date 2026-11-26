@@ -234,6 +234,21 @@ export default defineLocale<Messages>({
     toaster: {
       label: 'Ilmoitus',
       viewport: 'Ilmoitukset ({hotkey})'
+    },
+    videoPlayer: {
+      captions: 'Tekstitykset',
+      fullscreen: 'Koko näyttö',
+      label: 'Videosoitin',
+      mute: 'Mykistä',
+      normal: 'Normaali',
+      off: 'Pois',
+      pause: 'Tauko',
+      pictureInPicture: 'Kuva kuvassa',
+      play: 'Toista',
+      seek: 'Siirry',
+      settings: 'Asetukset',
+      speed: 'Nopeus',
+      volume: 'Äänenvoimakkuus'
     }
   }
 })

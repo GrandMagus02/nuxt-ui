@@ -234,6 +234,21 @@ export default defineLocale<Messages>({
     toaster: {
       label: 'Paziņojums',
       viewport: 'Paziņojumi ({hotkey})'
+    },
+    videoPlayer: {
+      captions: 'Subtitri',
+      fullscreen: 'Pilnekrāns',
+      label: 'Video atskaņotājs',
+      mute: 'Izslēgt skaņu',
+      normal: 'Normāls',
+      off: 'Izslēgts',
+      pause: 'Pauze',
+      pictureInPicture: 'Attēls attēlā',
+      play: 'Atskaņot',
+      seek: 'Pārtīt',
+      settings: 'Iestatījumi',
+      speed: 'Ātrums',
+      volume: 'Skaļums'
     }
   }
 })

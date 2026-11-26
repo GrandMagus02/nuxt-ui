@@ -234,6 +234,21 @@ export default defineLocale<Messages>({
     toaster: {
       label: 'การแจ้งเตือน',
       viewport: 'การแจ้งเตือน ({hotkey})'
+    },
+    videoPlayer: {
+      captions: 'คำบรรยาย',
+      fullscreen: 'เต็มหน้าจอ',
+      label: 'เครื่องเล่นวิดีโอ',
+      mute: 'ปิดเสียง',
+      normal: 'ปกติ',
+      off: 'ปิด',
+      pause: 'หยุดชั่วคราว',
+      pictureInPicture: 'ภาพซ้อนภาพ',
+      play: 'เล่น',
+      seek: 'เลื่อนตำแหน่ง',
+      settings: 'การตั้งค่า',
+      speed: 'ความเร็ว',
+      volume: 'ระดับเสียง'
     }
   }
 })

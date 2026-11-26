@@ -236,6 +236,21 @@ export default defineLocale<Messages>({
     toaster: {
       label: 'შეტყობინება',
       viewport: 'შეტყობინებები ({hotkey})'
+    },
+    videoPlayer: {
+      captions: 'სუბტიტრები',
+      fullscreen: 'სრული ეკრანი',
+      label: 'ვიდეოპლეერი',
+      mute: 'დადუმება',
+      normal: 'ნორმალური',
+      off: 'გამორთული',
+      pause: 'პაუზა',
+      pictureInPicture: 'სურათი სურათში',
+      play: 'დაკვრა',
+      seek: 'გადახვევა',
+      settings: 'პარამეტრები',
+      speed: 'სიჩქარე',
+      volume: 'ხმის სიმაღლე'
     }
   }
 })

@@ -239,6 +239,21 @@ export type Messages = {
     label: string
     viewport: string
   }
+  videoPlayer: {
+    captions: string
+    fullscreen: string
+    label: string
+    mute: string
+    normal: string
+    off: string
+    pause: string
+    pictureInPicture: string
+    play: string
+    seek: string
+    settings: string
+    speed: string
+    volume: string
+  }
 }
 
 export type Direction = 'ltr' | 'rtl'

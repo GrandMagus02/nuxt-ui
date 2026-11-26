@@ -234,6 +234,21 @@ export default defineLocale<Messages>({
     toaster: {
       label: 'Varsel',
       viewport: 'Varsler ({hotkey})'
+    },
+    videoPlayer: {
+      captions: 'Undertekster',
+      fullscreen: 'Fullskjerm',
+      label: 'Videospiller',
+      mute: 'Demp',
+      normal: 'Normal',
+      off: 'Av',
+      pause: 'Pause',
+      pictureInPicture: 'Bilde-i-bilde',
+      play: 'Spill av',
+      seek: 'Spol',
+      settings: 'Innstillinger',
+      speed: 'Hastighet',
+      volume: 'Volum'
     }
   }
 })

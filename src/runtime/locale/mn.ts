@@ -234,6 +234,21 @@ export default defineLocale<Messages>({
     toaster: {
       label: 'Мэдэгдэл',
       viewport: 'Мэдэгдлүүд ({hotkey})'
+    },
+    videoPlayer: {
+      captions: 'Хадмал',
+      fullscreen: 'Бүтэн дэлгэц',
+      label: 'Видео тоглуулагч',
+      mute: 'Дууг хаах',
+      normal: 'Хэвийн',
+      off: 'Унтраах',
+      pause: 'Түр зогсоох',
+      pictureInPicture: 'Зураг доторх зураг',
+      play: 'Тоглуулах',
+      seek: 'Гүйлгэх',
+      settings: 'Тохиргоо',
+      speed: 'Хурд',
+      volume: 'Дууны түвшин'
     }
   }
 })
