@@ -40,6 +40,18 @@ export default defineLocale<Messages>({
       uploading: 'Μεταφόρτωση',
       error: 'Η μεταφόρτωση απέτυχε'
     },
+    chatAudio: {
+      play: 'Αναπαραγωγή',
+      pause: 'Παύση',
+      seek: 'Μετάβαση',
+      remove: 'Αφαίρεση φωνητικού μηνύματος'
+    },
+    chatAudioRecorder: {
+      record: 'Εγγραφή φωνητικού μηνύματος',
+      stop: 'Διακοπή εγγραφής',
+      cancel: 'Ακύρωση εγγραφής',
+      recording: 'Εγγραφή σε εξέλιξη'
+    },
     chatMessages: {
       autoScroll: 'Κύλιση προς τα κάτω'
     },

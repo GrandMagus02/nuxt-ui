@@ -40,6 +40,18 @@ export default defineLocale<Messages>({
       uploading: 'Yuklanmoqda',
       error: 'Yuklab boʻlmadi'
     },
+    chatAudio: {
+      play: 'Ijro etish',
+      pause: 'Pauza',
+      seek: 'O‘tkazish',
+      remove: 'Ovozli xabarni o‘chirish'
+    },
+    chatAudioRecorder: {
+      record: 'Ovozli xabar yozish',
+      stop: 'Yozishni to‘xtatish',
+      cancel: 'Yozishni bekor qilish',
+      recording: 'Yozilmoqda'
+    },
     chatMessages: {
       autoScroll: 'Pastga oʻtish'
     },

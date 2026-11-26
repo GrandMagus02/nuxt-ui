@@ -40,6 +40,18 @@ export default defineLocale<Messages>({
       uploading: 'Запампоўваецца',
       error: 'Не ўдалося запампаваць'
     },
+    chatAudio: {
+      play: 'Прайграць',
+      pause: 'Паўза',
+      seek: 'Перамотка',
+      remove: 'Выдаліць галасавое паведамленне'
+    },
+    chatAudioRecorder: {
+      record: 'Запісаць галасавое паведамленне',
+      stop: 'Спыніць запіс',
+      cancel: 'Скасаваць запіс',
+      recording: 'Ідзе запіс'
+    },
     chatMessages: {
       autoScroll: 'Пракруціць уніз'
     },

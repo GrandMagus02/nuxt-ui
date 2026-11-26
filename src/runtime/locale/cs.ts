@@ -40,6 +40,18 @@ export default defineLocale<Messages>({
       uploading: 'Nahrávání',
       error: 'Nahrání se nezdařilo'
     },
+    chatAudio: {
+      play: 'Přehrát',
+      pause: 'Pozastavit',
+      seek: 'Posun',
+      remove: 'Odebrat hlasovou zprávu'
+    },
+    chatAudioRecorder: {
+      record: 'Nahrát hlasovou zprávu',
+      stop: 'Zastavit nahrávání',
+      cancel: 'Zrušit nahrávání',
+      recording: 'Nahrávání'
+    },
     chatMessages: {
       autoScroll: 'Posunout dolů'
     },

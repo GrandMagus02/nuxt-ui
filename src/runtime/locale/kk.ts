@@ -40,6 +40,18 @@ export default defineLocale<Messages>({
       uploading: 'Жүктелуде',
       error: 'Жүктеу сәтсіз аяқталды'
     },
+    chatAudio: {
+      play: 'Ойнату',
+      pause: 'Кідірту',
+      seek: 'Айналдыру',
+      remove: 'Дауыстық хабарды жою'
+    },
+    chatAudioRecorder: {
+      record: 'Дауыстық хабар жазу',
+      stop: 'Жазуды тоқтату',
+      cancel: 'Жазудан бас тарту',
+      recording: 'Жазылуда'
+    },
     chatMessages: {
       autoScroll: 'Төмен айналдыру'
     },

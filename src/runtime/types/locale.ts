@@ -34,6 +34,18 @@ export type Messages = {
     uploading: string
     error: string
   }
+  chatAudio: {
+    play: string
+    pause: string
+    seek: string
+    remove: string
+  }
+  chatAudioRecorder: {
+    record: string
+    stop: string
+    cancel: string
+    recording: string
+  }
   chatMessages: {
     autoScroll: string
   }

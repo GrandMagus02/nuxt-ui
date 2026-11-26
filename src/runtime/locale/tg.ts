@@ -40,6 +40,18 @@ export default defineLocale<Messages>({
       uploading: 'Боргузорӣ',
       error: 'Боргузорӣ ноком шуд'
     },
+    chatAudio: {
+      play: 'Пахш',
+      pause: 'Таваққуф',
+      seek: 'Гузариш',
+      remove: 'Нест кардани паёми овозӣ'
+    },
+    chatAudioRecorder: {
+      record: 'Сабти паёми овозӣ',
+      stop: 'Қатъ кардани сабт',
+      cancel: 'Бекор кардани сабт',
+      recording: 'Сабт шуда истодааст'
+    },
     chatMessages: {
       autoScroll: 'Ба поён ҳаракат додан'
     },

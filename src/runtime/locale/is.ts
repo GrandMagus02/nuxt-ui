@@ -40,6 +40,18 @@ export default defineLocale<Messages>({
       uploading: 'Hleður upp',
       error: 'Upphleðsla mistókst'
     },
+    chatAudio: {
+      play: 'Spila',
+      pause: 'Hlé',
+      seek: 'Spóla',
+      remove: 'Fjarlægja talskilaboð'
+    },
+    chatAudioRecorder: {
+      record: 'Taka upp talskilaboð',
+      stop: 'Stöðva upptöku',
+      cancel: 'Hætta við upptöku',
+      recording: 'Tekur upp'
+    },
     chatMessages: {
       autoScroll: 'Skruna niður'
     },

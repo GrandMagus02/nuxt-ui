@@ -40,6 +40,18 @@ export default defineLocale<Messages>({
       uploading: 'Uploader',
       error: 'Upload mislykkedes'
     },
+    chatAudio: {
+      play: 'Afspil',
+      pause: 'Pause',
+      seek: 'Spol',
+      remove: 'Fjern talebesked'
+    },
+    chatAudioRecorder: {
+      record: 'Optag talebesked',
+      stop: 'Stop optagelse',
+      cancel: 'Annuller optagelse',
+      recording: 'Optager'
+    },
     chatMessages: {
       autoScroll: 'Rul til bunden'
     },

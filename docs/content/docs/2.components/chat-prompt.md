@@ -108,6 +108,21 @@ async function onSubmit() {
 ```
 ::
 
+### Audio :badge{label="Soon" class="align-text-top"}
+
+Audio files bound with `v-model:files` show above the textarea as a [ChatAudio](/docs/components/chat-audio) player instead of an attachment. Put a [ChatAudioRecorder](/docs/components/chat-audio-recorder) in the `#footer` slot and push its recordings to the files to send voice messages.
+
+::component-example
+---
+collapse: true
+name: 'chat-prompt-audio-example'
+---
+::
+
+::tip
+Use the `audio` prop to customize the players, like `{ color: 'primary', variant: 'solid' }`{lang="ts-type"}.
+::
+
 ### Queue :badge{label="4.13+" class="align-text-top"}
 
 Use the `v-model:queue` directive to queue the messages submitted while the chat is `submitted` or `streaming` instead of ignoring them. They show in a panel attached above the prompt, where the user can send one now, put it back in the prompt to edit it, or remove it. The `send` event is emitted when one is picked to be sent now, after it moved to the front of the queue. While the prompt holds a message to queue, a [ChatPromptSubmit](/docs/components/chat-prompt-submit) inside it queues the message instead of stopping the response.

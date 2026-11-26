@@ -15,6 +15,8 @@ const components = [
   'carousel',
   'chart',
   'chat-attachment',
+  'chat-audio',
+  'chat-audio-recorder',
   'chat-message',
   'chat-prompt',
   'chat-reasoning',

@@ -40,6 +40,18 @@ export default defineLocale<Messages>({
       uploading: 'Igotzen',
       error: 'Ezin izan da igo'
     },
+    chatAudio: {
+      play: 'Erreproduzitu',
+      pause: 'Pausatu',
+      seek: 'Bilatu',
+      remove: 'Kendu ahots-mezua'
+    },
+    chatAudioRecorder: {
+      record: 'Grabatu ahots-mezua',
+      stop: 'Gelditu grabaketa',
+      cancel: 'Utzi grabaketa',
+      recording: 'Grabatzen'
+    },
     chatMessages: {
       autoScroll: 'Korritu behera'
     },

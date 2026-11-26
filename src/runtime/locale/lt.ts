@@ -40,6 +40,18 @@ export default defineLocale<Messages>({
       uploading: 'Įkeliama',
       error: 'Nepavyko įkelti'
     },
+    chatAudio: {
+      play: 'Leisti',
+      pause: 'Pristabdyti',
+      seek: 'Persukti',
+      remove: 'Pašalinti balso žinutę'
+    },
+    chatAudioRecorder: {
+      record: 'Įrašyti balso žinutę',
+      stop: 'Sustabdyti įrašymą',
+      cancel: 'Atšaukti įrašymą',
+      recording: 'Įrašoma'
+    },
     chatMessages: {
       autoScroll: 'Slinkti žemyn'
     },

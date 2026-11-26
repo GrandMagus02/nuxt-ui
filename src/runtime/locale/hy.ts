@@ -40,6 +40,18 @@ export default defineLocale<Messages>({
       uploading: 'Վերբեռնվում է',
       error: 'Վերբեռնումը ձախողվեց'
     },
+    chatAudio: {
+      play: 'Նվագարկել',
+      pause: 'Դադար',
+      seek: 'Տեղափոխել',
+      remove: 'Հեռացնել ձայնային հաղորդագրությունը'
+    },
+    chatAudioRecorder: {
+      record: 'Ձայնագրել ձայնային հաղորդագրություն',
+      stop: 'Կանգնեցնել ձայնագրությունը',
+      cancel: 'Չեղարկել ձայնագրությունը',
+      recording: 'Ձայնագրվում է'
+    },
     chatMessages: {
       autoScroll: 'Ոլորել ներքև'
     },

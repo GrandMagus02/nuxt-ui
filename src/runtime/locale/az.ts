@@ -40,6 +40,18 @@ export default defineLocale<Messages>({
       uploading: 'Yüklənir',
       error: 'Yükləmə alınmadı'
     },
+    chatAudio: {
+      play: 'Oxut',
+      pause: 'Fasilə',
+      seek: 'Keçid',
+      remove: 'Səsli mesajı sil'
+    },
+    chatAudioRecorder: {
+      record: 'Səsli mesaj yaz',
+      stop: 'Yazını dayandır',
+      cancel: 'Yazını ləğv et',
+      recording: 'Yazılır'
+    },
     chatMessages: {
       autoScroll: 'Aşağı sürüşdür'
     },

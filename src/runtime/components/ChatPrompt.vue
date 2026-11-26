@@ -6,6 +6,7 @@ import theme from '#build/ui/chat-prompt'
 import type { IconProps } from './Icon.vue'
 import type { TextareaProps, TextareaSlots } from './Textarea.vue'
 import type { ChatAttachmentProps } from './ChatAttachment.vue'
+import type { ChatAudioProps } from './ChatAudio.vue'
 import type { ComponentConfig } from '../types/tv'
 
 type ChatPrompt = ComponentConfig<typeof theme, AppConfig, 'chatPrompt'>
@@ -66,6 +67,11 @@ export interface ChatPromptProps extends Pick<TextareaProps, 'rows' | 'autofocus
    */
   attachment?: Pick<ChatAttachmentProps, 'variant' | 'size' | 'orientation' | 'removable' | 'icon' | 'removeIcon' | 'class' | 'ui'>
   /**
+   * The props of the audio players displayed above the textarea for audio files, used with `v-model:files`.
+   * `{ size: 'sm', removable: true }`{lang="ts-type"}
+   */
+  audio?: Pick<ChatAudioProps, 'color' | 'variant' | 'size' | 'bars' | 'removable' | 'playIcon' | 'pauseIcon' | 'removeIcon' | 'class' | 'ui'>
+  /**
    * The icon displayed to collapse the queue, used with `v-model:queue`.
    * @defaultValue appConfig.ui.icons.chevronDown
    * @IconifyIcon
@@ -117,6 +123,7 @@ import { chatPromptQueueingInjectionKey } from '../utils/chat'
 import { tv } from '../utils/tv'
 import UTextarea from './Textarea.vue'
 import UChatAttachment from './ChatAttachment.vue'
+import UChatAudio from './ChatAudio.vue'
 import UButton from './Button.vue'
 import UIcon from './Icon.vue'
 
@@ -423,14 +430,23 @@ defineExpose({
 
     <div v-if="files?.length" data-slot="files" :class="ui.files({ class: props.ui?.files })">
       <slot name="files" :files="files" :remove="removeFile">
-        <UChatAttachment
-          v-for="(file, index) in files"
-          :key="`${file.name}-${file.lastModified}-${index}`"
-          :file="file"
-          removable
-          v-bind="props.attachment"
-          @remove="removeFile(index)"
-        />
+        <template v-for="(file, index) in files" :key="`${file.name}-${file.lastModified}-${index}`">
+          <UChatAudio
+            v-if="file.type.startsWith('audio/')"
+            :file="file"
+            size="sm"
+            removable
+            v-bind="props.audio"
+            @remove="removeFile(index)"
+          />
+          <UChatAttachment
+            v-else
+            :file="file"
+            removable
+            v-bind="props.attachment"
+            @remove="removeFile(index)"
+          />
+        </template>
       </slot>
     </div>
 

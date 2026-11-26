@@ -1,0 +1,87 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`ChatAudioRecorder > renders with as correctly 1`] = `
+"<section data-state="idle" data-slot="root" class="inline-flex items-center min-w-0 gap-2"><button type="button" data-slot="trigger" aria-label="Record voice message" class="rounded-md font-medium inline-flex items-center disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 aria-disabled:opacity-75 transition-colors text-sm gap-1.5 text-default hover:bg-elevated active:bg-elevated outline-inverted/25 focus-visible:outline-3 hover:disabled:bg-transparent dark:hover:disabled:bg-transparent hover:aria-disabled:bg-transparent dark:hover:aria-disabled:bg-transparent p-1.5"><span class="iconify i-lucide:mic shrink-0 size-5" aria-hidden="true" data-slot="leadingIcon"></span>
+    <!--v-if-->
+    <!--v-if-->
+  </button><span style="position: absolute; border: 0px; width: 1px; height: 1px; padding: 0px; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); clip-path: inset(50%); white-space: nowrap; word-wrap: normal; top: -1px; left: -1px;" aria-live="polite"></span></section>"
+`;
+
+exports[`ChatAudioRecorder > renders with class correctly 1`] = `
+"<div data-state="idle" data-slot="root" class="inline-flex items-center min-w-0 gap-2 ms-auto"><button type="button" data-slot="trigger" aria-label="Record voice message" class="rounded-md font-medium inline-flex items-center disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 aria-disabled:opacity-75 transition-colors text-sm gap-1.5 text-default hover:bg-elevated active:bg-elevated outline-inverted/25 focus-visible:outline-3 hover:disabled:bg-transparent dark:hover:disabled:bg-transparent hover:aria-disabled:bg-transparent dark:hover:aria-disabled:bg-transparent p-1.5"><span class="iconify i-lucide:mic shrink-0 size-5" aria-hidden="true" data-slot="leadingIcon"></span>
+    <!--v-if-->
+    <!--v-if-->
+  </button><span style="position: absolute; border: 0px; width: 1px; height: 1px; padding: 0px; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); clip-path: inset(50%); white-space: nowrap; word-wrap: normal; top: -1px; left: -1px;" aria-live="polite"></span></div>"
+`;
+
+exports[`ChatAudioRecorder > renders with color correctly 1`] = `
+"<div data-state="idle" data-slot="root" class="inline-flex items-center min-w-0 gap-2"><button type="button" data-slot="trigger" aria-label="Record voice message" class="rounded-md font-medium inline-flex items-center disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 aria-disabled:opacity-75 transition-colors text-sm gap-1.5 text-primary hover:bg-primary/10 active:bg-primary/10 outline-primary/25 focus-visible:outline-3 disabled:bg-transparent aria-disabled:bg-transparent dark:disabled:bg-transparent dark:aria-disabled:bg-transparent p-1.5"><span class="iconify i-lucide:mic shrink-0 size-5" aria-hidden="true" data-slot="leadingIcon"></span>
+    <!--v-if-->
+    <!--v-if-->
+  </button><span style="position: absolute; border: 0px; width: 1px; height: 1px; padding: 0px; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); clip-path: inset(50%); white-space: nowrap; word-wrap: normal; top: -1px; left: -1px;" aria-live="polite"></span></div>"
+`;
+
+exports[`ChatAudioRecorder > renders with default slot correctly 1`] = `"<div data-state="idle" data-slot="root" class="inline-flex items-center min-w-0 gap-2">Default slot<span style="position: absolute; border: 0px; width: 1px; height: 1px; padding: 0px; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); clip-path: inset(50%); white-space: nowrap; word-wrap: normal; top: -1px; left: -1px;" aria-live="polite"></span></div>"`;
+
+exports[`ChatAudioRecorder > renders with disabled correctly 1`] = `
+"<div data-state="idle" data-slot="root" class="inline-flex items-center min-w-0 gap-2"><button type="button" disabled="" data-slot="trigger" aria-label="Record voice message" class="rounded-md font-medium inline-flex items-center disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 aria-disabled:opacity-75 transition-colors text-sm gap-1.5 text-default hover:bg-elevated active:bg-elevated outline-inverted/25 focus-visible:outline-3 hover:disabled:bg-transparent dark:hover:disabled:bg-transparent hover:aria-disabled:bg-transparent dark:hover:aria-disabled:bg-transparent p-1.5"><span class="iconify i-lucide:mic shrink-0 size-5" aria-hidden="true" data-slot="leadingIcon"></span>
+    <!--v-if-->
+    <!--v-if-->
+  </button><span style="position: absolute; border: 0px; width: 1px; height: 1px; padding: 0px; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); clip-path: inset(50%); white-space: nowrap; word-wrap: normal; top: -1px; left: -1px;" aria-live="polite"></span></div>"
+`;
+
+exports[`ChatAudioRecorder > renders with icon correctly 1`] = `
+"<div data-state="idle" data-slot="root" class="inline-flex items-center min-w-0 gap-2"><button type="button" data-slot="trigger" aria-label="Record voice message" class="rounded-md font-medium inline-flex items-center disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 aria-disabled:opacity-75 transition-colors text-sm gap-1.5 text-default hover:bg-elevated active:bg-elevated outline-inverted/25 focus-visible:outline-3 hover:disabled:bg-transparent dark:hover:disabled:bg-transparent hover:aria-disabled:bg-transparent dark:hover:aria-disabled:bg-transparent p-1.5"><span class="iconify i-lucide:mic-vocal shrink-0 size-5" aria-hidden="true" data-slot="leadingIcon"></span>
+    <!--v-if-->
+    <!--v-if-->
+  </button><span style="position: absolute; border: 0px; width: 1px; height: 1px; padding: 0px; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); clip-path: inset(50%); white-space: nowrap; word-wrap: normal; top: -1px; left: -1px;" aria-live="polite"></span></div>"
+`;
+
+exports[`ChatAudioRecorder > renders with size lg correctly 1`] = `
+"<div data-state="idle" data-slot="root" class="inline-flex items-center min-w-0 gap-2.5"><button type="button" data-slot="trigger" aria-label="Record voice message" class="rounded-md font-medium inline-flex items-center disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 aria-disabled:opacity-75 transition-colors text-sm gap-2 text-default hover:bg-elevated active:bg-elevated outline-inverted/25 focus-visible:outline-3 hover:disabled:bg-transparent dark:hover:disabled:bg-transparent hover:aria-disabled:bg-transparent dark:hover:aria-disabled:bg-transparent p-2"><span class="iconify i-lucide:mic shrink-0 size-5" aria-hidden="true" data-slot="leadingIcon"></span>
+    <!--v-if-->
+    <!--v-if-->
+  </button><span style="position: absolute; border: 0px; width: 1px; height: 1px; padding: 0px; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); clip-path: inset(50%); white-space: nowrap; word-wrap: normal; top: -1px; left: -1px;" aria-live="polite"></span></div>"
+`;
+
+exports[`ChatAudioRecorder > renders with size md correctly 1`] = `
+"<div data-state="idle" data-slot="root" class="inline-flex items-center min-w-0 gap-2"><button type="button" data-slot="trigger" aria-label="Record voice message" class="rounded-md font-medium inline-flex items-center disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 aria-disabled:opacity-75 transition-colors text-sm gap-1.5 text-default hover:bg-elevated active:bg-elevated outline-inverted/25 focus-visible:outline-3 hover:disabled:bg-transparent dark:hover:disabled:bg-transparent hover:aria-disabled:bg-transparent dark:hover:aria-disabled:bg-transparent p-1.5"><span class="iconify i-lucide:mic shrink-0 size-5" aria-hidden="true" data-slot="leadingIcon"></span>
+    <!--v-if-->
+    <!--v-if-->
+  </button><span style="position: absolute; border: 0px; width: 1px; height: 1px; padding: 0px; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); clip-path: inset(50%); white-space: nowrap; word-wrap: normal; top: -1px; left: -1px;" aria-live="polite"></span></div>"
+`;
+
+exports[`ChatAudioRecorder > renders with size sm correctly 1`] = `
+"<div data-state="idle" data-slot="root" class="inline-flex items-center min-w-0 gap-2"><button type="button" data-slot="trigger" aria-label="Record voice message" class="rounded-md font-medium inline-flex items-center disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 aria-disabled:opacity-75 transition-colors text-xs gap-1.5 text-default hover:bg-elevated active:bg-elevated outline-inverted/25 focus-visible:outline-3 hover:disabled:bg-transparent dark:hover:disabled:bg-transparent hover:aria-disabled:bg-transparent dark:hover:aria-disabled:bg-transparent p-1.5"><span class="iconify i-lucide:mic shrink-0 size-4" aria-hidden="true" data-slot="leadingIcon"></span>
+    <!--v-if-->
+    <!--v-if-->
+  </button><span style="position: absolute; border: 0px; width: 1px; height: 1px; padding: 0px; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); clip-path: inset(50%); white-space: nowrap; word-wrap: normal; top: -1px; left: -1px;" aria-live="polite"></span></div>"
+`;
+
+exports[`ChatAudioRecorder > renders with size xl correctly 1`] = `
+"<div data-state="idle" data-slot="root" class="inline-flex items-center min-w-0 gap-3"><button type="button" data-slot="trigger" aria-label="Record voice message" class="rounded-md font-medium inline-flex items-center disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 aria-disabled:opacity-75 transition-colors text-base gap-2 text-default hover:bg-elevated active:bg-elevated outline-inverted/25 focus-visible:outline-3 hover:disabled:bg-transparent dark:hover:disabled:bg-transparent hover:aria-disabled:bg-transparent dark:hover:aria-disabled:bg-transparent p-2"><span class="iconify i-lucide:mic shrink-0 size-6" aria-hidden="true" data-slot="leadingIcon"></span>
+    <!--v-if-->
+    <!--v-if-->
+  </button><span style="position: absolute; border: 0px; width: 1px; height: 1px; padding: 0px; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); clip-path: inset(50%); white-space: nowrap; word-wrap: normal; top: -1px; left: -1px;" aria-live="polite"></span></div>"
+`;
+
+exports[`ChatAudioRecorder > renders with size xs correctly 1`] = `
+"<div data-state="idle" data-slot="root" class="inline-flex items-center min-w-0 gap-1.5"><button type="button" data-slot="trigger" aria-label="Record voice message" class="rounded-md font-medium inline-flex items-center disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 aria-disabled:opacity-75 transition-colors text-xs gap-1 text-default hover:bg-elevated active:bg-elevated outline-inverted/25 focus-visible:outline-3 hover:disabled:bg-transparent dark:hover:disabled:bg-transparent hover:aria-disabled:bg-transparent dark:hover:aria-disabled:bg-transparent p-1"><span class="iconify i-lucide:mic shrink-0 size-4" aria-hidden="true" data-slot="leadingIcon"></span>
+    <!--v-if-->
+    <!--v-if-->
+  </button><span style="position: absolute; border: 0px; width: 1px; height: 1px; padding: 0px; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); clip-path: inset(50%); white-space: nowrap; word-wrap: normal; top: -1px; left: -1px;" aria-live="polite"></span></div>"
+`;
+
+exports[`ChatAudioRecorder > renders with ui correctly 1`] = `
+"<div data-state="idle" data-slot="root" class="inline-flex items-center min-w-0 gap-2"><button type="button" data-slot="trigger" aria-label="Record voice message" class="font-medium inline-flex items-center disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 aria-disabled:opacity-75 transition-colors text-sm gap-1.5 text-default hover:bg-elevated active:bg-elevated outline-inverted/25 focus-visible:outline-3 hover:disabled:bg-transparent dark:hover:disabled:bg-transparent hover:aria-disabled:bg-transparent dark:hover:aria-disabled:bg-transparent p-1.5 rounded-full"><span class="iconify i-lucide:mic shrink-0 size-5" aria-hidden="true" data-slot="leadingIcon"></span>
+    <!--v-if-->
+    <!--v-if-->
+  </button><span style="position: absolute; border: 0px; width: 1px; height: 1px; padding: 0px; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); clip-path: inset(50%); white-space: nowrap; word-wrap: normal; top: -1px; left: -1px;" aria-live="polite"></span></div>"
+`;
+
+exports[`ChatAudioRecorder > renders with variant correctly 1`] = `
+"<div data-state="idle" data-slot="root" class="inline-flex items-center min-w-0 gap-2"><button type="button" data-slot="trigger" aria-label="Record voice message" class="rounded-md font-medium inline-flex items-center disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 aria-disabled:opacity-75 transition-colors text-sm gap-1.5 text-default bg-elevated hover:bg-accented/75 active:bg-accented/75 outline-inverted/25 focus-visible:outline-3 disabled:bg-elevated aria-disabled:bg-elevated p-1.5"><span class="iconify i-lucide:mic shrink-0 size-5" aria-hidden="true" data-slot="leadingIcon"></span>
+    <!--v-if-->
+    <!--v-if-->
+  </button><span style="position: absolute; border: 0px; width: 1px; height: 1px; padding: 0px; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); clip-path: inset(50%); white-space: nowrap; word-wrap: normal; top: -1px; left: -1px;" aria-live="polite"></span></div>"
+`;

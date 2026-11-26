@@ -40,6 +40,18 @@ export default defineLocale<Messages>({
       uploading: 'Üleslaadimine',
       error: 'Üleslaadimine ebaõnnestus'
     },
+    chatAudio: {
+      play: 'Esita',
+      pause: 'Paus',
+      seek: 'Keri',
+      remove: 'Eemalda häälsõnum'
+    },
+    chatAudioRecorder: {
+      record: 'Salvesta häälsõnum',
+      stop: 'Peata salvestamine',
+      cancel: 'Tühista salvestamine',
+      recording: 'Salvestamine'
+    },
     chatMessages: {
       autoScroll: 'Keri alla'
     },

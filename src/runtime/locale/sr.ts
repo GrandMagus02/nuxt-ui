@@ -40,6 +40,18 @@ export default defineLocale<Messages>({
       uploading: 'Отпремање',
       error: 'Отпремање није успело'
     },
+    chatAudio: {
+      play: 'Пусти',
+      pause: 'Пауза',
+      seek: 'Премотај',
+      remove: 'Уклони гласовну поруку'
+    },
+    chatAudioRecorder: {
+      record: 'Сними гласовну поруку',
+      stop: 'Заустави снимање',
+      cancel: 'Откажи снимање',
+      recording: 'Снимање'
+    },
     chatMessages: {
       autoScroll: 'Помери на дно'
     },

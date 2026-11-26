@@ -40,6 +40,18 @@ export default defineLocale<Messages>({
       uploading: 'Gëtt eropgelueden',
       error: 'Eropluede feelgeschloen'
     },
+    chatAudio: {
+      play: 'Ofspillen',
+      pause: 'Paus',
+      seek: 'Spulen',
+      remove: 'Sproochmessage ewechhuelen'
+    },
+    chatAudioRecorder: {
+      record: 'Sproochmessage ophuelen',
+      stop: 'Opnam stoppen',
+      cancel: 'Opnam ofbriechen',
+      recording: 'Gëtt opgeholl'
+    },
     chatMessages: {
       autoScroll: 'No ënnen scrollen'
     },

@@ -40,6 +40,18 @@ export default defineLocale<Messages>({
       uploading: 'កំពុងផ្ទុកឡើង',
       error: 'ការផ្ទុកឡើងបានបរាជ័យ'
     },
+    chatAudio: {
+      play: 'ចាក់',
+      pause: 'ផ្អាក',
+      seek: 'រំកិល',
+      remove: 'លុបសារសំឡេង'
+    },
+    chatAudioRecorder: {
+      record: 'ថតសារសំឡេង',
+      stop: 'បញ្ឈប់ការថត',
+      cancel: 'បោះបង់ការថត',
+      recording: 'កំពុងថត'
+    },
     chatMessages: {
       autoScroll: 'រំកិលចុះក្រោម'
     },

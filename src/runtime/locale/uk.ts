@@ -40,6 +40,18 @@ export default defineLocale<Messages>({
       uploading: 'Завантаження',
       error: 'Не вдалося завантажити'
     },
+    chatAudio: {
+      play: 'Відтворити',
+      pause: 'Пауза',
+      seek: 'Перемотування',
+      remove: 'Видалити голосове повідомлення'
+    },
+    chatAudioRecorder: {
+      record: 'Записати голосове повідомлення',
+      stop: 'Зупинити запис',
+      cancel: 'Скасувати запис',
+      recording: 'Триває запис'
+    },
     chatMessages: {
       autoScroll: 'Прокрутити вниз'
     },

@@ -40,6 +40,18 @@ export default defineLocale<Messages>({
       uploading: 'Se încarcă',
       error: 'Încărcarea a eșuat'
     },
+    chatAudio: {
+      play: 'Redă',
+      pause: 'Pauză',
+      seek: 'Derulează',
+      remove: 'Elimină mesajul vocal'
+    },
+    chatAudioRecorder: {
+      record: 'Înregistrează un mesaj vocal',
+      stop: 'Oprește înregistrarea',
+      cancel: 'Anulează înregistrarea',
+      recording: 'Se înregistrează'
+    },
     chatMessages: {
       autoScroll: 'Derulează în jos'
     },

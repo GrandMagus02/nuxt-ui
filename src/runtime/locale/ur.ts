@@ -41,6 +41,18 @@ export default defineLocale<Messages>({
       uploading: 'اپ لوڈ ہو رہا ہے',
       error: 'اپ لوڈ ناکام ہو گیا'
     },
+    chatAudio: {
+      play: 'چلائیں',
+      pause: 'روکیں',
+      seek: 'آگے پیچھے کریں',
+      remove: 'صوتی پیغام ہٹائیں'
+    },
+    chatAudioRecorder: {
+      record: 'صوتی پیغام ریکارڈ کریں',
+      stop: 'ریکارڈنگ روکیں',
+      cancel: 'ریکارڈنگ منسوخ کریں',
+      recording: 'ریکارڈ ہو رہا ہے'
+    },
     chatMessages: {
       autoScroll: 'نیچے سکرول کریں'
     },

@@ -40,6 +40,18 @@ export default defineLocale<Messages>({
       uploading: 'Байршуулж байна',
       error: 'Байршуулж чадсангүй'
     },
+    chatAudio: {
+      play: 'Тоглуулах',
+      pause: 'Түр зогсоох',
+      seek: 'Гүйлгэх',
+      remove: 'Дуут мессеж устгах'
+    },
+    chatAudioRecorder: {
+      record: 'Дуут мессеж бичих',
+      stop: 'Бичлэгийг зогсоох',
+      cancel: 'Бичлэгийг цуцлах',
+      recording: 'Бичиж байна'
+    },
     chatMessages: {
       autoScroll: 'Доош гүйлгэх'
     },

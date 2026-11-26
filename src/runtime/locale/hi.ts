@@ -40,6 +40,18 @@ export default defineLocale<Messages>({
       uploading: 'अपलोड हो रहा है',
       error: 'अपलोड विफल रहा'
     },
+    chatAudio: {
+      play: 'चलाएं',
+      pause: 'रोकें',
+      seek: 'आगे-पीछे करें',
+      remove: 'वॉइस संदेश हटाएं'
+    },
+    chatAudioRecorder: {
+      record: 'वॉइस संदेश रिकॉर्ड करें',
+      stop: 'रिकॉर्डिंग रोकें',
+      cancel: 'रिकॉर्डिंग रद्द करें',
+      recording: 'रिकॉर्ड हो रहा है'
+    },
     chatMessages: {
       autoScroll: 'नीचे स्क्रॉल करें'
     },

@@ -40,6 +40,18 @@ export default defineLocale<Messages>({
       uploading: 'Ladataan',
       error: 'Lataus epäonnistui'
     },
+    chatAudio: {
+      play: 'Toista',
+      pause: 'Tauko',
+      seek: 'Siirry',
+      remove: 'Poista ääniviesti'
+    },
+    chatAudioRecorder: {
+      record: 'Nauhoita ääniviesti',
+      stop: 'Lopeta nauhoitus',
+      cancel: 'Peruuta nauhoitus',
+      recording: 'Nauhoitetaan'
+    },
     chatMessages: {
       autoScroll: 'Vieritä alas'
     },

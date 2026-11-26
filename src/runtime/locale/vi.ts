@@ -40,6 +40,18 @@ export default defineLocale<Messages>({
       uploading: 'Đang tải lên',
       error: 'Tải lên thất bại'
     },
+    chatAudio: {
+      play: 'Phát',
+      pause: 'Tạm dừng',
+      seek: 'Tua',
+      remove: 'Xóa tin nhắn thoại'
+    },
+    chatAudioRecorder: {
+      record: 'Ghi âm tin nhắn thoại',
+      stop: 'Dừng ghi âm',
+      cancel: 'Hủy ghi âm',
+      recording: 'Đang ghi âm'
+    },
     chatMessages: {
       autoScroll: 'Cuộn xuống dưới'
     },

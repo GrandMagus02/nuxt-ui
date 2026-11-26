@@ -41,6 +41,18 @@ export default defineLocale<Messages>({
       uploading: 'يۈكلەۋاتىدۇ',
       error: 'يۈكلەش مەغلۇپ بولدى'
     },
+    chatAudio: {
+      play: 'قويۇش',
+      pause: 'ۋاقىتلىق توختىتىش',
+      seek: 'يۆتكەش',
+      remove: 'ئاۋازلىق ئۇچۇرنى ئۆچۈرۈش'
+    },
+    chatAudioRecorder: {
+      record: 'ئاۋازلىق ئۇچۇر خاتىرىلەش',
+      stop: 'خاتىرىلەشنى توختىتىش',
+      cancel: 'خاتىرىلەشنى بىكار قىلىش',
+      recording: 'خاتىرىلىنىۋاتىدۇ'
+    },
     chatMessages: {
       autoScroll: 'ئاستىغا سۈرۈش'
     },

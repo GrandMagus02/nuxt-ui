@@ -40,6 +40,18 @@ export default defineLocale<Messages>({
       uploading: 'Enviando',
       error: 'Falha no envio'
     },
+    chatAudio: {
+      play: 'Reproduzir',
+      pause: 'Pausar',
+      seek: 'Avançar',
+      remove: 'Remover mensagem de voz'
+    },
+    chatAudioRecorder: {
+      record: 'Gravar mensagem de voz',
+      stop: 'Parar gravação',
+      cancel: 'Cancelar gravação',
+      recording: 'Gravando'
+    },
     chatMessages: {
       autoScroll: 'Rolar para baixo'
     },

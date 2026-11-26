@@ -40,6 +40,18 @@ export default defineLocale<Messages>({
       uploading: 'იტვირთება',
       error: 'ატვირთვა ვერ მოხერხდა'
     },
+    chatAudio: {
+      play: 'დაკვრა',
+      pause: 'პაუზა',
+      seek: 'გადახვევა',
+      remove: 'ხმოვანი შეტყობინების წაშლა'
+    },
+    chatAudioRecorder: {
+      record: 'ხმოვანი შეტყობინების ჩაწერა',
+      stop: 'ჩაწერის შეჩერება',
+      cancel: 'ჩაწერის გაუქმება',
+      recording: 'მიმდინარეობს ჩაწერა'
+    },
     chatMessages: {
       autoScroll: 'ქვემოთ გადახვევა'
     },

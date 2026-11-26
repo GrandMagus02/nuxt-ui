@@ -40,6 +40,18 @@ export default defineLocale<Messages>({
       uploading: 'Augšupielādē',
       error: 'Augšupielāde neizdevās'
     },
+    chatAudio: {
+      play: 'Atskaņot',
+      pause: 'Pauze',
+      seek: 'Pārtīt',
+      remove: 'Noņemt balss ziņu'
+    },
+    chatAudioRecorder: {
+      record: 'Ierakstīt balss ziņu',
+      stop: 'Apturēt ierakstu',
+      cancel: 'Atcelt ierakstu',
+      recording: 'Notiek ierakstīšana'
+    },
     chatMessages: {
       autoScroll: 'Ritināt uz leju'
     },

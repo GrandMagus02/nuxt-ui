@@ -40,6 +40,18 @@ export default defineLocale<Messages>({
       uploading: '正在上传',
       error: '上传失败'
     },
+    chatAudio: {
+      play: '播放',
+      pause: '暂停',
+      seek: '跳转',
+      remove: '删除语音消息'
+    },
+    chatAudioRecorder: {
+      record: '录制语音消息',
+      stop: '停止录音',
+      cancel: '取消录音',
+      recording: '正在录音'
+    },
     chatMessages: {
       autoScroll: '滚动到底部'
     },

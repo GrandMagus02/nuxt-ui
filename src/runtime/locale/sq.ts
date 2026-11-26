@@ -40,6 +40,18 @@ export default defineLocale<Messages>({
       uploading: 'Po ngarkohet',
       error: 'Ngarkimi dështoi'
     },
+    chatAudio: {
+      play: 'Luaj',
+      pause: 'Pauzë',
+      seek: 'Kalo',
+      remove: 'Hiq mesazhin zanor'
+    },
+    chatAudioRecorder: {
+      record: 'Regjistro mesazh zanor',
+      stop: 'Ndalo regjistrimin',
+      cancel: 'Anulo regjistrimin',
+      recording: 'Po regjistrohet'
+    },
     chatMessages: {
       autoScroll: 'Lëviz poshtë'
     },

@@ -70,11 +70,12 @@ export interface ChatMessageSlots<TMetadata = unknown, TDataParts extends UIData
 </script>
 
 <script setup lang="ts" generic="TMetadata, TDataParts extends UIDataTypes, TTools extends UITools">
-import { computed } from 'vue'
+import { computed, provide } from 'vue'
 import { Primitive } from 'reka-ui'
 import { useAppConfig } from '#imports'
 import { useComponentProps } from '../composables/useComponentProps'
 import { omit } from '../utils'
+import { chatMessageInjectionKey } from '../utils/chat'
 import { tv } from '../utils/tv'
 import UButton from './Button.vue'
 import UTooltip from './Tooltip.vue'
@@ -100,6 +101,13 @@ const textParts = computed(() => props.parts?.filter(isTextPart) ?? [])
 const hasContent = computed(() => !!props.content || !!textParts.value.length || !!slots.content || (!!slots.part && !!props.parts?.length))
 
 const messageProps = computed(() => omit(props, ['as', 'icon', 'avatar', 'variant', 'color', 'side', 'actions', 'compact', 'class', 'ui', 'content']))
+
+// Content rendered inside the message, like `UChatAudio`, matches its color, variant and density
+provide(chatMessageInjectionKey, computed(() => ({
+  color: props.color ?? appConfig.ui?.chatMessage?.defaultVariants?.color ?? theme.defaultVariants?.color,
+  variant: props.variant ?? appConfig.ui?.chatMessage?.defaultVariants?.variant ?? theme.defaultVariants?.variant,
+  compact: props.compact
+})))
 
 // eslint-disable-next-line vue/no-dupe-keys
 const ui = computed(() => tv({ extend: theme, ...(appConfig.ui?.chatMessage || {}) })({

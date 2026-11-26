@@ -40,6 +40,18 @@ export default defineLocale<Messages>({
       uploading: 'アップロード中',
       error: 'アップロードに失敗しました'
     },
+    chatAudio: {
+      play: '再生',
+      pause: '一時停止',
+      seek: 'シーク',
+      remove: 'ボイスメッセージを削除'
+    },
+    chatAudioRecorder: {
+      record: 'ボイスメッセージを録音',
+      stop: '録音を停止',
+      cancel: '録音をキャンセル',
+      recording: '録音中'
+    },
     chatMessages: {
       autoScroll: '一番下までスクロール'
     },

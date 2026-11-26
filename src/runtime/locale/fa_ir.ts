@@ -41,6 +41,18 @@ export default defineLocale<Messages>({
       uploading: 'در حال بارگذاری',
       error: 'بارگذاری ناموفق بود'
     },
+    chatAudio: {
+      play: 'پخش',
+      pause: 'توقف',
+      seek: 'جابه‌جایی',
+      remove: 'حذف پیام صوتی'
+    },
+    chatAudioRecorder: {
+      record: 'ضبط پیام صوتی',
+      stop: 'توقف ضبط',
+      cancel: 'لغو ضبط',
+      recording: 'در حال ضبط'
+    },
     chatMessages: {
       autoScroll: 'پیمایش به پایین'
     },

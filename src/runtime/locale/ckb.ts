@@ -41,6 +41,18 @@ export default defineLocale<Messages>({
       uploading: 'بارکردن',
       error: 'بارکردن سەرکەوتوو نەبوو'
     },
+    chatAudio: {
+      play: 'لێدان',
+      pause: 'ڕاگرتن',
+      seek: 'گواستنەوە',
+      remove: 'سڕینەوەی نامەی دەنگی'
+    },
+    chatAudioRecorder: {
+      record: 'تۆمارکردنی نامەی دەنگی',
+      stop: 'وەستاندنی تۆمارکردن',
+      cancel: 'هەڵوەشاندنەوەی تۆمارکردن',
+      recording: 'تۆمار دەکرێت'
+    },
     chatMessages: {
       autoScroll: 'بۆ خوارەوە بڕۆ'
     },

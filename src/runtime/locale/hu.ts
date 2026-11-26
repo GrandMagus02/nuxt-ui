@@ -40,6 +40,18 @@ export default defineLocale<Messages>({
       uploading: 'Feltöltés',
       error: 'Sikertelen feltöltés'
     },
+    chatAudio: {
+      play: 'Lejátszás',
+      pause: 'Szünet',
+      seek: 'Tekerés',
+      remove: 'Hangüzenet eltávolítása'
+    },
+    chatAudioRecorder: {
+      record: 'Hangüzenet rögzítése',
+      stop: 'Felvétel leállítása',
+      cancel: 'Felvétel elvetése',
+      recording: 'Felvétel folyamatban'
+    },
     chatMessages: {
       autoScroll: 'Görgetés az aljára'
     },

@@ -24,6 +24,8 @@ Follow the **How to Build an AI Chatbot** guide to build a full app with chat hi
 | Component | Description |
 | --- | --- |
 | [ChatAttachment](/docs/components/chat-attachment) | File attached to a prompt or a message, with upload states. |
+| [ChatAudio](/docs/components/chat-audio) | Voice message player with a seekable waveform. |
+| [ChatAudioRecorder](/docs/components/chat-audio-recorder) | Microphone button that records a voice message. |
 | [ChatMessages](/docs/components/chat-messages) | Scrollable message list with auto-scroll and loading indicator. |
 | [ChatMessage](/docs/components/chat-message) | Individual message bubble with avatar, actions, and slots. |
 | [ChatPrompt](/docs/components/chat-prompt) | Enhanced textarea for submitting prompts. |

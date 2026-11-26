@@ -41,6 +41,18 @@ export default defineLocale<Messages>({
       uploading: 'جارٍ الرفع',
       error: 'فشل الرفع'
     },
+    chatAudio: {
+      play: 'تشغيل',
+      pause: 'إيقاف مؤقت',
+      seek: 'تقديم',
+      remove: 'إزالة الرسالة الصوتية'
+    },
+    chatAudioRecorder: {
+      record: 'تسجيل رسالة صوتية',
+      stop: 'إيقاف التسجيل',
+      cancel: 'إلغاء التسجيل',
+      recording: 'جارٍ التسجيل'
+    },
     chatMessages: {
       autoScroll: 'التمرير إلى الأسفل'
     },

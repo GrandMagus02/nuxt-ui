@@ -40,6 +40,18 @@ export default defineLocale<Messages>({
       uploading: 'Mengunggah',
       error: 'Gagal mengunggah'
     },
+    chatAudio: {
+      play: 'Putar',
+      pause: 'Jeda',
+      seek: 'Geser',
+      remove: 'Hapus pesan suara'
+    },
+    chatAudioRecorder: {
+      record: 'Rekam pesan suara',
+      stop: 'Hentikan rekaman',
+      cancel: 'Batalkan rekaman',
+      recording: 'Merekam'
+    },
     chatMessages: {
       autoScroll: 'Gulir ke bawah'
     },

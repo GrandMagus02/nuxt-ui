@@ -40,6 +40,18 @@ export default defineLocale<Messages>({
       uploading: 'Laster opp',
       error: 'Opplasting mislyktes'
     },
+    chatAudio: {
+      play: 'Spill av',
+      pause: 'Pause',
+      seek: 'Spol',
+      remove: 'Fjern talemelding'
+    },
+    chatAudioRecorder: {
+      record: 'Spill inn talemelding',
+      stop: 'Stopp opptak',
+      cancel: 'Avbryt opptak',
+      recording: 'Tar opp'
+    },
     chatMessages: {
       autoScroll: 'Rull til bunnen'
     },
