@@ -17,6 +17,8 @@ catalog:
   "@ai-sdk/anthropic": ^4.0.107
   "@ai-sdk/gateway": ^4.0.152
   "@ai-sdk/vue": ^4.0.179
+  "@atlaskit/pragmatic-drag-and-drop": ^4.0.0
+  "@atlaskit/pragmatic-drag-and-drop-auto-scroll": ^3.2.1
   "@codspeed/vitest-plugin": ^6.1.1
   "@comark/vue": ^0.9.2
   "@floating-ui/dom": ^1.8.0

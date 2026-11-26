@@ -142,6 +142,8 @@
     "size": "node test/bundle/size.mjs"
   },
   "dependencies": {
+    "@atlaskit/pragmatic-drag-and-drop": "catalog:",
+    "@atlaskit/pragmatic-drag-and-drop-auto-scroll": "catalog:",
     "@floating-ui/dom": "catalog:",
     "@iconify/vue": "catalog:",
     "@internationalized/date": "catalog:",

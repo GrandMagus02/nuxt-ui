@@ -226,6 +226,20 @@ export type Messages = {
     thumb: string
     value: string
   }
+  spreadsheet: {
+    cut: string
+    copy: string
+    paste: string
+    clear: string
+    insertRowAbove: string
+    insertRowBelow: string
+    deleteRows: string
+    sortAscending: string
+    sortDescending: string
+    undo: string
+    redo: string
+    selectAll: string
+  }
   stepper: {
     label: string
   }

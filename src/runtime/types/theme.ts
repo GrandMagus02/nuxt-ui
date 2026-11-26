@@ -170,6 +170,7 @@ export interface ThemeDefaults {
   slideover?: Partial<ComponentTypes.SlideoverProps>
   slider?: Partial<ComponentTypes.SliderProps>
   splitter?: Partial<ComponentTypes.SplitterProps>
+  spreadsheet?: Partial<ComponentTypes.SpreadsheetProps>
   stepper?: Partial<ComponentTypes.StepperProps>
   switch?: Partial<ComponentTypes.SwitchProps>
   table?: Partial<ComponentTypes.TableProps>

@@ -222,6 +222,20 @@ export default defineLocale<Messages>({
       thumb: '滑块',
       value: '第 {index} 个值，共 {total} 个'
     },
+    spreadsheet: {
+      cut: '剪切',
+      copy: '复制',
+      paste: '粘贴',
+      clear: '清除',
+      insertRowAbove: '在上方插入行',
+      insertRowBelow: '在下方插入行',
+      deleteRows: '删除行',
+      sortAscending: '升序排序',
+      sortDescending: '降序排序',
+      undo: '撤销',
+      redo: '重做',
+      selectAll: '全选'
+    },
     stepper: {
       label: '进度'
     },

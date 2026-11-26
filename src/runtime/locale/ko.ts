@@ -222,6 +222,20 @@ export default defineLocale<Messages>({
       thumb: '핸들',
       value: '{total}개 중 {index}번째 값'
     },
+    spreadsheet: {
+      cut: 'Cut',
+      copy: 'Copy',
+      paste: 'Paste',
+      clear: 'Clear',
+      insertRowAbove: 'Insert row above',
+      insertRowBelow: 'Insert row below',
+      deleteRows: 'Delete rows',
+      sortAscending: 'Sort A to Z',
+      sortDescending: 'Sort Z to A',
+      undo: 'Undo',
+      redo: 'Redo',
+      selectAll: 'Select all'
+    },
     stepper: {
       label: '진행 상황'
     },

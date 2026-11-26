@@ -222,6 +222,20 @@ export default defineLocale<Messages>({
       thumb: 'Curseur',
       value: 'Valeur {index} sur {total}'
     },
+    spreadsheet: {
+      cut: 'Couper',
+      copy: 'Copier',
+      paste: 'Coller',
+      clear: 'Effacer',
+      insertRowAbove: 'Insérer une ligne au-dessus',
+      insertRowBelow: 'Insérer une ligne en dessous',
+      deleteRows: 'Supprimer les lignes',
+      sortAscending: 'Trier de A à Z',
+      sortDescending: 'Trier de Z à A',
+      undo: 'Annuler',
+      redo: 'Rétablir',
+      selectAll: 'Tout sélectionner'
+    },
     stepper: {
       label: 'progression'
     },

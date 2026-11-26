@@ -222,6 +222,20 @@ export default defineLocale<Messages>({
       thumb: 'つまみ',
       value: '{total}個中{index}番目の値'
     },
+    spreadsheet: {
+      cut: '切り取り',
+      copy: 'コピー',
+      paste: '貼り付け',
+      clear: 'クリア',
+      insertRowAbove: '上に行を挿入',
+      insertRowBelow: '下に行を挿入',
+      deleteRows: '行を削除',
+      sortAscending: '昇順で並べ替え',
+      sortDescending: '降順で並べ替え',
+      undo: '元に戻す',
+      redo: 'やり直し',
+      selectAll: 'すべて選択'
+    },
     stepper: {
       label: '進捗'
     },

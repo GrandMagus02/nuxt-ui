@@ -222,6 +222,20 @@ export default defineLocale<Messages>({
       thumb: 'Regler',
       value: 'Wäert {index} vu {total}'
     },
+    spreadsheet: {
+      cut: 'Cut',
+      copy: 'Copy',
+      paste: 'Paste',
+      clear: 'Clear',
+      insertRowAbove: 'Insert row above',
+      insertRowBelow: 'Insert row below',
+      deleteRows: 'Delete rows',
+      sortAscending: 'Sort A to Z',
+      sortDescending: 'Sort Z to A',
+      undo: 'Undo',
+      redo: 'Redo',
+      selectAll: 'Select all'
+    },
     stepper: {
       label: 'Fortschrëtt'
     },

@@ -222,6 +222,20 @@ export default defineLocale<Messages>({
       thumb: 'Schieberegler',
       value: 'Wert {index} von {total}'
     },
+    spreadsheet: {
+      cut: 'Ausschneiden',
+      copy: 'Kopieren',
+      paste: 'Einfügen',
+      clear: 'Löschen',
+      insertRowAbove: 'Zeile oberhalb einfügen',
+      insertRowBelow: 'Zeile unterhalb einfügen',
+      deleteRows: 'Zeilen löschen',
+      sortAscending: 'Von A bis Z sortieren',
+      sortDescending: 'Von Z bis A sortieren',
+      undo: 'Rückgängig',
+      redo: 'Wiederholen',
+      selectAll: 'Alles auswählen'
+    },
     stepper: {
       label: 'Fortschritt'
     },

@@ -85,6 +85,7 @@ const components = [
   'slideover',
   'slider',
   'splitter',
+  'spreadsheet',
   'stepper',
   'switch',
   'table',

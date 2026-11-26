@@ -222,6 +222,20 @@ export default defineLocale<Messages>({
       thumb: 'Ползунок',
       value: 'Значение {index} из {total}'
     },
+    spreadsheet: {
+      cut: 'Вырезать',
+      copy: 'Копировать',
+      paste: 'Вставить',
+      clear: 'Очистить',
+      insertRowAbove: 'Вставить строку выше',
+      insertRowBelow: 'Вставить строку ниже',
+      deleteRows: 'Удалить строки',
+      sortAscending: 'Сортировать от А до Я',
+      sortDescending: 'Сортировать от Я до А',
+      undo: 'Отменить',
+      redo: 'Повторить',
+      selectAll: 'Выделить всё'
+    },
     stepper: {
       label: 'прогресс'
     },
